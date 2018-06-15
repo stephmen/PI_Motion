@@ -35,6 +35,7 @@
         var previous_frame = [];
         // choose a brightness threshold, if the old pixel values differs enough then we know there's movement
         var threshold = 15;
+        var alert = 0
         function StreamToCanvas2D() {
             const w = video.videoWidth;
             const h = video.videoHeight;
@@ -56,11 +57,12 @@
                     // first check if it's not the first frame, but
                     // seeing of when the previous_frame array
                     // is not we empty, and then only draw something if there's
+
                     if(previous_frame[pos]
                     && Math.abs(previous_frame[pos] - r) > threshold) {
                     ctxD.fillStyle = 'rgb(' + r + ',' + g + ',' + b + ')'
                     ctxD.fillRect(x, y, sample_size, sample_size);
-                    var alert = alert + 1
+                    alert + 1
                     // a significant colour difference
                     }
 
