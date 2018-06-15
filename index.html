@@ -1,0 +1,70 @@
+<html>
+
+<body>
+    <script type="text/javascript" src="https://rawgit.com/131/h264-live-player/master/vendor/dist/http-live-player.js"></script>
+    <script>
+        //Receiving <canvas> for H264(Rasberry PI Format) only loaded in memoy
+        const canvas = document.createElement("canvas");
+        const video = document.createElement("video");
+        let canvasD = document.createElement("canvas");
+        let ctxD = canvasD.getContext('2d');
+
+        document.body.appendChild(canvasD).setAttribute("id", "destination");
+
+
+        // Streaming to Canvas from Raspberry PI with Express Socket
+        // <canvas> WEBGL(H264)
+        const wsavc = new WSAvcPlayer(canvas, "webgl");
+        const protocol = window.location.protocol === "http:" ? "ws:" : "ws:"
+        wsavc.connect(protocol + '//' + window.location.host + '/video-stream');
+
+        //Streaming to <video>(captureStream)
+
+        const stream = canvas.captureStream();
+        video.srcObject = stream;
+        video.play()
+
+        //Streaming to <canvas> ctx 2D
+
+
+        function StreamToCanvas2D() {
+            const width = video.videoWidth;
+            const height = video.videoHeight
+            canvasD.width = width
+            canvasD.height = height;
+            ctxD.drawImage(video, 0, 0, width, height);
+
+            // get the screen's pixels data
+            let w = width
+            let h = height
+            let sample_size = 3
+            let data = ctxD.getImageData(0, 0, w, h).data;
+            // loop through rows and columns
+            for (var y = 0; y < h; y += sample_size) {
+                for (var x = 0; x < w; x += sample_size) {
+                    // the data array is a continuous array of red, blue, green
+                    // and alpha values, so each pixel takes up four values
+                    // in the array
+                    var pos = (x + y * w) * 4;
+                    //console.log('x',x,'y',y,'w',w)
+                    //console.log(pos)
+
+                    // get red, blue and green pixel value
+                    var r = data[pos];
+                    var g = data[pos + 1];
+                    var b = data[pos + 2];
+
+
+                    // draw the pixels as blocks of colours
+                    ctxD.fillStyle = 'rgb(' + r + ',' + g + ',' + b + ')'
+                    ctxD.fillRect(x, y, sample_size, sample_size);
+                }
+            }
+        };
+
+
+        video.addEventListener('progress', StreamToCanvas2D);
+    </script>
+</body>
+
+</html>
