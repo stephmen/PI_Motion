@@ -53,14 +53,14 @@
                     var g = data[pos + 1];
                     var b = data[pos + 2];
                     // draw the pixels as blocks of colours
-                      // first check if it's not the first frame, but
+                    ctxD.fillStyle = 'rgb(' + r + ',' + g + ',' + b + ')'
+                    ctxD.fillRect(x, y, sample_size, sample_size);
+                    // first check if it's not the first frame, but
                     // seeing of when the previous_frame array
                     // is not we empty, and then only draw something if there's
                     if(previous_frame[pos]
                     && Math.abs(previous_frame[pos] - r) > threshold) {
                     // a significant colour difference
-                    ctxD.fillStyle = 'rgb(' + r + ',' + g + ',' + b + ')'
-                    ctxD.fillRect(x, y, sample_size, sample_size);
                     }
                     // store these colour values to compare to the next frame
                     previous_frame[pos] = r;
