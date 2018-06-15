@@ -31,11 +31,15 @@
         //Streaming to <canvas> ctx 2D
 
         function StreamToCanvas2D() {
+            // make an array to hold our old pixel values
+            var previous_frame = [];
             const w = video.videoWidth;
             const h = video.videoHeight;
             canvasD.width = w;
             canvasD.height = h;
             ctxD.drawImage(video, 0, 0, w, h);
+            // choose a brightness threshold, if the old pixel values differs enough then we know there's movement
+            var threshold = 50;
             // get the screen's pixels data
             let sample_size = 15
             let data = ctxD.getImageData(0, 0, w, h).data;
@@ -49,8 +53,17 @@
                     var g = data[pos + 1];
                     var b = data[pos + 2];
                     // draw the pixels as blocks of colours
+                      // first check if it's not the first frame, but
+                    // seeing of when the previous_frame array
+                    // is not we empty, and then only draw something if there's
+                    if(previous_frame[pos]
+                    && Math.abs(previous_frame[pos] - r) > threshold) {
+                    // a significant colour difference
                     ctxD.fillStyle = 'rgb(' + r + ',' + g + ',' + b + ')'
                     ctxD.fillRect(x, y, sample_size, sample_size);
+                    }
+                    // store these colour values to compare to the next frame
+                    previous_frame[pos] = r;
                 }
             }
         };
