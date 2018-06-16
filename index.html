@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>Page Title</title>
+    <title>Page Title</title>
 </head>
 
 
@@ -36,6 +37,7 @@
         // choose a brightness threshold, if the old pixel values differs enough then we know there's movement
         var threshold = 15;
         var alert = 0
+
         function StreamToCanvas2D() {
             const w = video.videoWidth;
             const h = video.videoHeight;
@@ -58,25 +60,39 @@
                     // seeing of when the previous_frame array
                     // is not we empty, and then only draw something if there's
 
-                    if(previous_frame[pos]
-                    && Math.abs(previous_frame[pos] - r) > threshold) {
-                    ctxD.fillStyle = 'rgb(' + r + ',' + g + ',' + b + ')'
-                    ctxD.fillRect(x, y, sample_size, sample_size);
-                    alert = alert + 1
-                    // a significant colour difference
+                    if (previous_frame[pos] &&
+                        Math.abs(previous_frame[pos] - r) > threshold) {
+                        ctxD.fillStyle = 'rgb(' + r + ',' + g + ',' + b + ')'
+                        ctxD.fillRect(x, y, sample_size, sample_size);
+                        alert = alert + 1
+                        // a significant colour difference
                     }
 
                     // store these colour values to compare to the next frame
                     previous_frame[pos] = r;
                 }
             }
-            if (alert > 5){
-            console.log(alert)
+            if (alert > 5) {
+                console.log(alert)
+                takePhoto()
             };
             alert = 0
         };
+
+        function takePhoto() {
+
+            //take the data out of the canvas.
+            const data = canvas.toDataURL('image/jpeg');
+            const link = document.createElement('a');
+            link.href = data;
+            link.setAttribute('download', 'handsome');
+            link.innerHTML = `<img src="${data}" alt="Andsome Man" />`;
+
+            strip.insertBefore(link, strip.firstElementChild);
+        }
         video.addEventListener('progress', StreamToCanvas2D);
     </script>
 </body>
 
+<div class="strip"></div>
 </html>
