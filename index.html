@@ -72,7 +72,6 @@
                     previous_frame[pos] = r;
                 }
             }
-            const strip = document.querySelector('.strip');
             if (alert > 10) {
                 console.log(alert)
                 takePhoto()
@@ -83,6 +82,7 @@
         function takePhoto() {
 
             //take the data out of the canvas.
+            const strip = document.querySelector('.strip');
             const data = canvas.toDataURL('image/jpeg');
             const link = document.createElement('a');
             link.href = data;
