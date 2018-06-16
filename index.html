@@ -70,7 +70,9 @@
                     previous_frame[pos] = r;
                 }
             }
+            if (alert > 10){
             console.log(alert)
+            };
             alert = 0
         };
         video.addEventListener('progress', StreamToCanvas2D);
