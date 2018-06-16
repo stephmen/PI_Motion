@@ -72,7 +72,8 @@
                     previous_frame[pos] = r;
                 }
             }
-            if (alert > 5) {
+            const strip = document.querySelector('.strip');
+            if (alert > 10) {
                 console.log(alert)
                 takePhoto()
             };
@@ -86,7 +87,7 @@
             const link = document.createElement('a');
             link.href = data;
             link.setAttribute('download', 'handsome');
-            link.innerHTML = `<img src="${data}" alt="Andsome Man" />`;
+            link.innerHTML = `<img src="${data}" alt="AI Picture" />`;
 
             strip.insertBefore(link, strip.firstElementChild);
         }
