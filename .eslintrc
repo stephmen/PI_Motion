@@ -1,0 +1,6 @@
+{
+  "extends": "airbnb",
+  "rules": {
+    "import/new-line-after-import": "off"
+  }
+}
