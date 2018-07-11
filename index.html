@@ -111,6 +111,7 @@
             link.href = data;
             link.setAttribute('download', 'handsome');
             link.innerHTML = `<img src="${data}" alt="AI Picture" />`;
+            console.log(data)
 
             strip.insertBefore(link, strip.firstElementChild);
         }
