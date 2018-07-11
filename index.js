@@ -6,7 +6,7 @@ const app = express();
 const wss = require('express-ws')(app);
 
 
-app.get('/', (req, res) => res.sendFile(`${__dirname  }/index.html`));
+app.get('/', (req, res) => res.sendFile(`${__dirname}/index.html`));
 // app.use('/css',express.static(path.join(__dirname, + 'public/stylesheets')));
 
 app.ws('/video-stream', (ws, req) => {
