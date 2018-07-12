@@ -6,3 +6,10 @@ module.exports = {
     filename: "bundle.js"
   }
 }
+module: {
+  loaders: [
+      {
+          exclude: /node_modules/,
+      }
+  ]
+}
