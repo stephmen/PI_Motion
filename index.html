@@ -111,9 +111,15 @@
             link.href = data;
             link.setAttribute('download', 'handsome');
             link.innerHTML = `<img src="${data}" alt="AI Picture" />`;
-            console.log(data)
+            // Sending image to Watson
+
+            const Base64Decode = require('base64-stream').decode;
+            const stringImage = data;
+            const imgFile = new Base64Decode(stringImage);
+            console.log(string)
 
             strip.insertBefore(link, strip.firstElementChild);
+
         }
         video.addEventListener('progress', StreamToCanvas2D);
     </script>
