@@ -1,7 +1,7 @@
 
 const express = require('express');
 const raspividStream = require('raspivid-stream');
-
+const Base64Decode = require('base64-stream').decode;
 const app = express();
 const wss = require('express-ws')(app);
 
