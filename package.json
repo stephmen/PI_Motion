@@ -4,9 +4,8 @@
   "description": "A pure-JS Raspberry Pi webcam",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack ./index.js bundle.js",
-    "dev": "nodemon",
+    "start": "node index.js",
+    "build": "webpack --progress --watch",
     "lint": "eslint ./"
   },
   "keywords": [
@@ -18,12 +17,14 @@
   ],
   "author": "Stephane Menard <stephmen@gmal.com>",
   "dependencies": {
+    "babel": "^6.23.0",
     "base64-stream": "^0.1.3",
     "express": "^4.16.2",
     "express-ws": "^4.0.0",
     "h264-live-player": "^1.3.1",
     "node-blinkt": "Irrelon/node-blinkt#2324852",
-    "raspivid-stream": "^0.2.1-beta"
+    "raspivid-stream": "^0.2.1-beta",
+    "webpack-node-externals": "^1.7.2"
   },
   "devDependencies": {
     "eslint": "^4.19.1",

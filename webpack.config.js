@@ -1,15 +1,15 @@
-var path = require('path');
+var nodeExternals = require('webpack-node-externals');
+const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
-  entry: "./index.js",
+  mode: 'development',
+  target: 'node',
+  //externals: [nodeExternals()],
+  entry: {
+    filename: './index.js',
+  },
   output: {
-    filename: "bundle.js"
+    filename: '_build/bundle.js',
   }
-}
-module: {
-  loaders: [
-      {
-          exclude: /node_modules/,
-      }
-  ]
 }
