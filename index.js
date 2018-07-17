@@ -28,6 +28,11 @@ app.ws('/video-stream', (ws, req) => {
   });
 });
 
+app.get('/watson', (req,res) => {
+  console.log('Watson est ici')
+}
+)
+
 
 app.use((err, req, res, next) => {
   console.error(err);
