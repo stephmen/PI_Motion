@@ -1,43 +1,41 @@
 <!DOCTYPE html>
-<html lang="en"></html>
+<html lang="en">
+
+</html>
 <html>
+
 <head>
     <base href="/">
     <title>Page Title</title>
     <style type="text/css">
-    .strip {
-  padding:2rem;
-}
-.strip img {
-  width:100px;
-  overflow-x: scroll;
-  padding:0.8rem 0.8rem 2.5rem 0.8rem;
-  box-shadow:0 0 3px rgba(0,0,0,0.2);
-  background:white;
-}
+        .strip {
+            padding: 2rem;
+        }
 
-/* .strip a:nth-child(5n+1) img { transform: rotate(10deg); } */
-/* .strip a:nth-child(5n+2) img { transform: rotate(-2deg); } */
-/* .strip a:nth-child(5n+3) img { transform: rotate(8deg); } */
-/* .strip a:nth-child(5n+4) img { transform: rotate(-11deg); } */
-/* .strip a:nth-child(5n+5) img { transform: rotate(12deg); } */
-</style>
+        .strip img {
+            width: 100px;
+            overflow-x: scroll;
+            padding: 0.8rem 0.8rem 2.5rem 0.8rem;
+            box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+            background: white;
+        }
+    </style>
 
 </head>
 
 
 <body>
     <script type="text/javascript" src="https://rawgit.com/131/h264-live-player/master/vendor/dist/http-live-player.js"></script>
-    <script src="dist/bundle.js" charset="uft-8"></script>
+    <script src="./dist/bundle.js" charset="uft-8"></script>
     <script>
         //Receiving <canvas> for H264(Rasberry PI Format) only loaded in memoy
-            const canvas = document.createElement("canvas");
-            const video = document.createElement("video");
-            let canvasD = document.createElement("canvas");
-            let ctxD = canvasD.getContext('2d');
-            const pellicule = document.createElement("div")
-            document.body.appendChild(canvasD).setAttribute("id", "destination");
-            document.body.appendChild(pellicule).setAttribute("class", "strip");
+        const canvas = document.createElement("canvas");
+        const video = document.createElement("video");
+        let canvasD = document.createElement("canvas");
+        let ctxD = canvasD.getContext('2d');
+        const pellicule = document.createElement("div")
+        document.body.appendChild(canvasD).setAttribute("id", "destination");
+        document.body.appendChild(pellicule).setAttribute("class", "strip");
 
 
 
