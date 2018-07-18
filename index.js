@@ -33,6 +33,9 @@ app.get('/watson', (req,res) => {
 }
 )
 
+//trying to resolve weback issue
+
+app.use(express.static('dist'))
 
 app.use((err, req, res, next) => {
   console.error(err);
