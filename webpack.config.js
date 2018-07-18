@@ -1,8 +1,9 @@
 const webpack = require('webpack');
-var nodeExternals = require('webpack-node-externals');
+const nodeExternals = require('webpack-node-externals');
 const path = require('path');
 
 module.exports = {
+  path: path.resolve(__dirname, './dist'),
   mode: 'development',
   target: 'node',
   externals: [nodeExternals()],
@@ -10,6 +11,7 @@ module.exports = {
     filename: './index.js',
   },
   output: {
-    filename: './dist/bundle.js',
+    path: path.join(__dirname, 'dist'),
+    filename: 'bundle.js',
   }
 }
