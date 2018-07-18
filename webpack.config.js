@@ -5,7 +5,7 @@ const path = require('path');
 module.exports = {
   mode: 'development',
   target: 'node',
-  //externals: [nodeExternals()],
+  externals: [nodeExternals()],
   entry: {
     filename: './index.js',
   },
