@@ -10,6 +10,6 @@ module.exports = {
     filename: './index.js',
   },
   output: {
-    filename: './_build/bundle.js',
+    filename: './dist/bundle.js',
   }
 }
