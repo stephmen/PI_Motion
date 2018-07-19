@@ -12,7 +12,8 @@ module.exports = {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
   },
-  rules: [
+  module:{
+    rules: [
     {
       test: /\.js$/,
       exclude: /node_modules/,
@@ -21,4 +22,5 @@ module.exports = {
       }
     }
   ]
+  }
 }
