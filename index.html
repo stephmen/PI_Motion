@@ -115,8 +115,8 @@
 
             const stringImage = data;
             //const imgFile = new Base64Decode(stringImage);
-            import Base64Decode from 'base64-stream';
-            const imgFile = Base64Decode.decode(stringImage)
+            import { decode } from 'base64-stream';
+            const imgFile = decode(stringImage)
             console.log(stringImage)
 
             strip.insertBefore(link, strip.firstElementChild);
