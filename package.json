@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "build": "webpack --progress --watch",
+    "dev": "webpack --mode development --progress --watch",
+    "build": "webpack --mode production --progress --watch",
     "lint": "eslint ./"
-  },
+    },
   "keywords": [
     "resin-io",
     "raspberrypi",
