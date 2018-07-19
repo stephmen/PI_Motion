@@ -112,7 +112,7 @@
             link.innerHTML = `<img src="${data}" alt="AI Picture" />`;
             // Sending image to Watson
 
-            const Base64Decode = require('base64-stream').decode;
+
             const stringImage = data;
             const imgFile = new Base64Decode(stringImage);
             console.log(stringImage)
