@@ -4,7 +4,7 @@ const raspividStream = require('raspivid-stream');
 const Base64Decode = require('base64-stream').decode;
 const app = express();
 const wss = require('express-ws')(app);
-const Base64Decode = require('base64-stream').decode;
+
 
 
 app.use(express.static('dist'))
