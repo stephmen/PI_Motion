@@ -4,9 +4,9 @@
   "description": "A pure-JS Raspberry Pi webcam",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node ./src/index.js",
     "dev": "webpack --mode development",
-    "build": "webpack --mode production --progress --watch",
+    "build": "webpack --mode production",
     "lint": "eslint ./"
   },
   "keywords": [
