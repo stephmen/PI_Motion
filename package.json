@@ -8,7 +8,7 @@
     "dev": "webpack --mode development",
     "build": "webpack --mode production --progress --watch",
     "lint": "eslint ./"
-    },
+  },
   "keywords": [
     "resin-io",
     "raspberrypi",
@@ -20,6 +20,7 @@
   "dependencies": {
     "babel": "^6.23.0",
     "babel-cli": "^7.0.0-beta.3",
+    "babel-loader": "^7.1.5",
     "base64-stream": "^0.1.3",
     "bufferutil": "^4.0.0",
     "express": "^4.16.3",
