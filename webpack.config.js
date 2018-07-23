@@ -4,7 +4,7 @@ const path = require('path');
 
 module.exports = {
   target: 'node',
-  externals: [nodeExternals()],
+  //externals: [nodeExternals()],
   entry: {
     filename: './src/index.js',
   },
@@ -12,15 +12,15 @@ module.exports = {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
   },
-  module:{
+  module: {
     rules: [
-    {
-      test: /\.js$/,
-      exclude: /node_modules/,
-      use: {
-        loader: "babel-loader"
-      }
-    }
-  ]
-  }
-}
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+        },
+      },
+    ],
+  },
+};
