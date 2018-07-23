@@ -5,13 +5,13 @@ const path = require('path');
 module.exports = {
   target: 'node',
   //externals: [nodeExternals()],
-  entry: {
-    filename: './src/index.js',
-  },
-  output: {
-    path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
-  },
+//  entry: {
+//     filename: './src/index.js',
+//   },
+//   output: {
+//     path: path.join(__dirname, 'dist'),
+//     filename: 'bundle.js',
+//   },
   module: {
     rules: [
       {
