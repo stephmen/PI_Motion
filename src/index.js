@@ -32,10 +32,10 @@ app.ws('/video-stream', (ws, req) => {
   });
 });
 
-app.get('/watson', (req,res) => {
-  res.console.log('Watson est ici')
-}
-)
+// app.get('/watson', (req,res) => {
+//   res.console.log('Watson est ici')
+// }
+//)
 
 //trying to resolve weback issue
 
@@ -45,4 +45,4 @@ app.use((err, req, res, next) => {
   next(err);
 });
 
-app.listen(80, () => console.log('Server started on 80'));
+app.listen(80x, () => console.log('Server started on 80'));
