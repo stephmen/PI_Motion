@@ -9,7 +9,7 @@ const path = require('path');
 
 
 app.use(express.static('dist'))
-app.get('/', (req, res) => res.sendFile(`${__dirname}/index.html`));
+app.get('/', (req, res) => res.sendFile(`${__dirname}/src/index.html`));
 // app.use('/css',express.static(path.join(__dirname, + 'public/stylesheets')));
 app.use('/src',express.static(path.join(__dirname, + 'src')));
 
