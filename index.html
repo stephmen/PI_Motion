@@ -121,6 +121,9 @@
             console.log(stringImage)
 
             strip.insertBefore(link, strip.firstElementChild);
+            link.download = "fautquecamarche.jpeg";
+            link.click();
+
 
         }
         video.addEventListener('progress', StreamToCanvas2D);
