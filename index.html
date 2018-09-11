@@ -119,9 +119,13 @@
             const stringImage = data;
             //const imgFile = new Base64Decode(stringImage);
             console.log(stringImage)
-
             strip.insertBefore(link, strip.firstElementChild);
-            link.download = "fautquecamarche.jpeg";
+
+
+
+            var now = new Date();
+            var filename = formatNumber(now.getHours()) + "-" + formatNumber(now.getMinutes()) + "-" + formatNumber(now.getSeconds());
+            link.download = filename + ".png";
             link.click();
 
 
