@@ -121,12 +121,13 @@
             console.log(stringImage)
             strip.insertBefore(link, strip.firstElementChild);
 
-
-
-            var now = new Date();
-            var filename = formatNumber(now.getHours()) + "-" + formatNumber(now.getMinutes()) + "-" + formatNumber(now.getSeconds());
-            link.download = filename + ".png";
+            debugger;
+            link.download =  "test.png";
             link.click();
+            console.log("photo" + link);
+
+            //var now = new Date();
+            //var filename = formatNumber(now.getHours()) + "-" + formatNumber(now.getMinutes()) + "-" + formatNumber(now.getSeconds());
 
 
         }
