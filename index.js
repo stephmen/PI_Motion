@@ -8,7 +8,7 @@ const wss = require('express-ws')(app);
 
 app.use(express.static('dist'))
 app.get('/', (req, res) => res.sendFile(`${__dirname}/index.html`));
-//app.use(express.static(path.join(__dirname, + 'StreamToCanvas2D.js')));
+
 
 app.ws('/video-stream', (ws, req) => {
   console.log('Client connected');
@@ -29,12 +29,6 @@ app.ws('/video-stream', (ws, req) => {
   });
 });
 
-app.get('/watson', (req,res) => {
-  console.log('Watson est ici')
-}
-)
-
-//trying to resolve weback issue
 
 
 app.use((err, req, res, next) => {
