@@ -30,7 +30,7 @@ app.ws('/video-stream', (ws, req) => {
 });
 
 app.get('/watson', (req,res) => {
-  res.console.log('Watson est ici')
+  console.log('Watson est ici')
 }
 )
 
