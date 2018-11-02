@@ -1,14 +1,14 @@
-
 const express = require('express');
 const raspividStream = require('raspivid-stream');
 const Base64Decode = require('base64-stream').decode;
 const app = express();
 const wss = require('express-ws')(app);
+const path = require('path');
 
 
 app.use(express.static('dist'))
 app.get('/', (req, res) => res.sendFile(`${__dirname}/index.html`));
-app.use('/',express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.ws('/video-stream', (ws, req) => {
   console.log('Client connected');
