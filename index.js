@@ -8,7 +8,7 @@ const wss = require('express-ws')(app);
 
 app.use(express.static('dist'))
 app.get('/', (req, res) => res.sendFile(`${__dirname}/index.html`));
-
+app.use(express.static(__dirname + '/public'));
 
 app.ws('/video-stream', (ws, req) => {
   console.log('Client connected');
