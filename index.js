@@ -35,10 +35,11 @@ app.ws('/video-stream', (ws, req) => {
 // Handle POST from xxx/receive
 app.post('/receive', function(request, respond) {
   // The image data will be store here
+  console.log("The Image Was Triggered")
   var body = '';
   // Target file path
-  var filePath = __dirname + '/testWrite/canvas.png';
-
+  var filePath = __dirname + 'testWrite/canvas.png';
+  console.log(filePath)
   //
   request.on('data', function(data) {
     body += data;
