@@ -97,10 +97,23 @@
             link.innerHTML = `<img src="${data}" alt="AI Picture" />`;
             strip.insertBefore(link, strip.firstElementChild);
 
-            //const stringImage = data;
-            //console.log(stringImage)
-            //link.download =  "test.png";
-            //console.log("photo" + link);
+            //////////////////////////////////////////////////
+            /////////////////Here WE GO///////////////////////
+            /////////////////////////////////////////////////
+
+
+            var post = new XMLHttpRequest();
+            // I assume your web server have a handler to handle any POST request send to
+            // '/receive' in the same domain.
+            // Create a POST request to /receive
+            post.open("POST", "/receive");
+            // Send the image data
+            post.send(data);
+
+
+            ////////////////////////////////////////////////
+            ///////////////////////////////////////////////
+
         }
         video.addEventListener('progress', StreamToCanvas2D);
     </script>
