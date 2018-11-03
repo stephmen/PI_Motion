@@ -95,12 +95,12 @@
             link.href = data;
             link.setAttribute('download', 'handsome');
             link.innerHTML = `<img src="${data}" alt="AI Picture" />`;
-
-            const stringImage = data;
-            console.log(stringImage)
             strip.insertBefore(link, strip.firstElementChild);
-            link.download =  "test.png";
-            console.log("photo" + link);
+
+            //const stringImage = data;
+            //console.log(stringImage)
+            //link.download =  "test.png";
+            //console.log("photo" + link);
         }
         video.addEventListener('progress', StreamToCanvas2D);
     </script>
