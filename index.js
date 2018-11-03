@@ -38,7 +38,7 @@ app.post('/receive', function(request, respond) {
   console.log("The Image Was Triggered")
   var body = '';
   // Target file path
-  var filePath = __dirname + '/testWrite/canvas.png';
+  var filePath = __dirname + '/testWrite/canvas.jpg';
   console.log(filePath)
   //
   request.on('data', function(data) {
