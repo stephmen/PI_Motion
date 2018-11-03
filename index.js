@@ -30,6 +30,7 @@ app.ws('/video-stream', (ws, req) => {
   });
 });
 /////////////////////////////////////////////////////////
+/////https://stackoverflow.com/questions/31359006/html-canvas-output-jpg-image-to-server-when-button-is-pressed
 ///////Here we GO////////////////////////////////////////
 // Handle POST from xxx/receive
 app.post('/receive', function(request, respond) {

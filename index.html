@@ -90,7 +90,10 @@
 
         function takePhoto() {
             const strip = document.querySelector('.strip');
+            const post = new XMLHttpRequest();
             const data = canvas.toDataURL('image/jpeg');
+            post.open("POST", "/receive");
+            post.send(data);
             const link = document.createElement('a');
             link.href = data;
             link.setAttribute('download', 'handsome');
@@ -102,13 +105,10 @@
             /////////////////////////////////////////////////
 
 
-            var post = new XMLHttpRequest();
             // I assume your web server have a handler to handle any POST request send to
             // '/receive' in the same domain.
             // Create a POST request to /receive
-            post.open("POST", "/receive");
             // Send the image data
-            post.send(data);
 
 
             ////////////////////////////////////////////////
