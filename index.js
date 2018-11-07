@@ -19,9 +19,17 @@ app.ws('/video-stream', (ws, req) => {
     height: '480',
   }));
 
-  const videoStream = raspividStream({ width: 640, height: 480, rotation: 180 });
+  const videoStream = raspividStream({
+    width: 640,
+    height: 480,
+    rotation: 180
+  });
   videoStream.on('data', (data) => {
-    ws.send(data, { binary: true }, (error) => { if (error) console.error(error); });
+    ws.send(data, {
+      binary: true
+    }, (error) => {
+      if (error) console.error(error);
+    });
   });
 
   ws.on('close', () => {
@@ -33,7 +41,7 @@ app.ws('/video-stream', (ws, req) => {
 /////https://stackoverflow.com/questions/31359006/html-canvas-output-jpg-image-to-server-when-button-is-pressed
 ///////Here we GO////////////////////////////////////////
 // Handle POST from xxx/receive
-app.post('/receive', function(request, respond) {
+app.post('/receive', function (request, respond) {
   // The image data will be store here
   console.log("The Image Was Triggered")
   var body = '';
@@ -41,20 +49,45 @@ app.post('/receive', function(request, respond) {
   var filePath = __dirname + '/testWrite/canvas.jpg';
   console.log(filePath)
   //
-  request.on('data', function(data) {
+  request.on('data', function (data) {
     body += data;
   });
 
   // When whole image uploaded complete.
-  request.on('end', function (){
+  request.on('end', function () {
     // Get rid of the image header as we only need the data parts after it.
     var data = body.replace(/^data:image\/\w+;base64,/, "");
     // Create a buffer and set its encoding to base64
     var buf = new Buffer(data, 'base64');
     // Write
-    fs.writeFile(filePath, buf, function(err){
+    fs.writeFile(filePath, buf, function (err) {
       if (err) throw err
       // Respond to client that the canvas image is saved.
+      var VisualRecognitionV3 = require('watson-developer-cloud/visual-recognition/v3');
+      //var fs = require('fs');
+
+      var visualRecognition = new VisualRecognitionV3({
+        version: '2018-03-19',
+        iam_apikey: '{8-Rj9GT4s1zsvI3LDGvvKtuRulW86EmU2eSArET5QTRf}'
+      });
+
+      var images_file = fs.createReadStream('./testWrite/canvas.jpg');
+      //var owners = ["me"];
+      //var threshold = 0.6;
+
+      var params = {
+        images_file: images_file,
+        //owners: owners,
+        //threshold: threshold
+      };
+
+      visualRecognition.classify(params, function (err, response) {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(JSON.stringify(response, null, 2))
+        }
+      });
       respond.end();
     });
   });

@@ -1,9 +1,9 @@
 var VisualRecognitionV3 = require('watson-developer-cloud/visual-recognition/v3');
-var fs = require('fs');
+//var fs = require('fs');
 
 var visualRecognition = new VisualRecognitionV3({
   version: '2018-03-19',
-  iam_apikey: '{iam_api_key}'
+  iam_apikey: '{8-Rj9GT4s1zsvI3LDGvvKtuRulW86EmU2eSArET5QTRf}'
 });
 
 var images_file= fs.createReadStream('./testWrite/canvas.jpg');
@@ -27,7 +27,7 @@ visualRecognition.classify(params, function(err, response) {
 
 
 /////////TESTED Successfulll 07/11/2018
-curl -X POST -u "apikey:8-Rj9GT4s1zsvI3LDGvvKtuRulW86EmU2eSArET5QTRf" --form "images_file=@./testWrite/canvas.png" "https://gateway.watsonplatform.net/visual-recognition/api/v3/classify?version=2018-03-19"
+//curl -X POST -u "apikey:8-Rj9GT4s1zsvI3LDGvvKtuRulW86EmU2eSArET5QTRf" --form "images_file=@./testWrite/canvas.png" "https://gateway.watsonplatform.net/visual-recognition/api/v3/classify?version=2018-03-19"
 //////////////////////////////////////
 
 
