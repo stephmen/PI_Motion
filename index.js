@@ -68,7 +68,7 @@ app.post('/receive', function (request, respond) {
 
       var visualRecognition = new VisualRecognitionV3({
         version: '2018-03-19',
-        iam_apikey: '{8-Rj9GT4s1zsvI3LDGvvKtuRulW86EmU2eSArET5QTRf}'
+        iam_apikey: '8-Rj9GT4s1zsvI3LDGvvKtuRulW86EmU2eSArET5QTRf'
       });
 
       var images_file = fs.createReadStream('./testWrite/canvas.jpg');
