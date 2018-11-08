@@ -1,6 +1,6 @@
 const express = require('express');
 const raspividStream = require('raspivid-stream');
-const Base64Decode = require('base64-stream').decode;
+//const Base64Decode = require('base64-stream').decode;
 const fs = require('fs');
 const app = express();
 const wss = require('express-ws')(app);
@@ -64,7 +64,7 @@ app.post('/receive', function (request, respond) {
       if (err) throw err
       // Respond to client that the canvas image is saved.
       var VisualRecognitionV3 = require('watson-developer-cloud/visual-recognition/v3');
-      //var fs = require('fs');
+
 
       var visualRecognition = new VisualRecognitionV3({
         version: '2018-03-19',
