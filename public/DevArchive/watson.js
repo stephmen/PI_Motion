@@ -6,7 +6,7 @@ var visualRecognition = new VisualRecognitionV3({
   iam_apikey: '{8-Rj9GT4s1zsvI3LDGvvKtuRulW86EmU2eSArET5QTRf}'
 });
 
-var images_file= fs.createReadStream('./testWrite/canvas.jpg');
+var images_file= fs.createReadStream('./Images/canvas.jpg');
 //var owners = ["me"];
 //var threshold = 0.6;
 

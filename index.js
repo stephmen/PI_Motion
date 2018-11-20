@@ -46,7 +46,7 @@ app.post('/receive', function (request, respond) {
   console.log("The Image Was Triggered")
   var body = '';
   // Target file path
-  var filePath = __dirname + '/testWrite/canvas.jpg';
+  var filePath = __dirname + '/Images/canvas.jpg';
   console.log(filePath)
   //
   request.on('data', function (data) {
@@ -71,7 +71,7 @@ app.post('/receive', function (request, respond) {
         iam_apikey: '8-Rj9GT4s1zsvI3LDGvvKtuRulW86EmU2eSArET5QTRf'
       });
 
-      var images_file = fs.createReadStream('./testWrite/canvas.jpg');
+      var images_file = fs.createReadStream('./Images/canvas.jpg');
       //var owners = ["me"];
       //var threshold = 0.6;
 

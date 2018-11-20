@@ -1,0 +1,43 @@
+{
+  "images": [
+    {
+      "classifiers": [
+        {
+          "classifier_id": "default",
+          "name": "default",
+          "classes": [
+            {
+              "class": "dormitory",
+              "score": 0.808,
+              "type_hierarchy": "/indoors/bedroom/dormitory"
+            },
+            {
+              "class": "bedroom",
+              "score": 0.819
+            },
+            {
+              "class": "indoors",
+              "score": 0.82
+            },
+            {
+              "class": "office",
+              "score": 0.764,
+              "type_hierarchy": "/building/office"
+            },
+            {
+              "class": "building",
+              "score": 0.764
+            },
+            {
+              "class": "sage green color",
+              "score": 0.911
+            }
+          ]
+        }
+      ],
+      "image": "canvas.jpg"
+    }
+  ],
+  "images_processed": 1,
+  "custom_classes": 0
+}
