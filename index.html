@@ -26,7 +26,7 @@
 
 
         // Streaming to Canvas from Raspberry PI with Express Socket
-        // <canvas> WEBGL(H264)
+        // <canvas> WEBGL(H264) This Canvas is not showing up on page it runs in the background
         const wsavc = new WSAvcPlayer(canvas, "webgl");
         const protocol = window.location.protocol === "http:" ? "ws:" : "wss:"
         wsavc.connect(protocol + '//' + window.location.host + '/video-stream');
@@ -37,7 +37,7 @@
         video.srcObject = stream;
         video.play()
 
-        //Streaming to <canvas> ctx 2D
+        //Streaming to <canvasD> ctx 2D
         //Pixelisation Size
         var sample_size = 10
         // make an array to hold our old pixel values
@@ -93,17 +93,21 @@
             const strip = document.querySelector('.strip');
             const post = new XMLHttpRequest();
             const data = canvas.toDataURL('image/jpeg');
-            post.open("POST", "/receive");
-            post.send(data);
+            //post.open("POST", "/receive");
+            //post.send(data);
             const link = document.createElement('a');
             link.href = data;
-            link.setAttribute('download', 'handsome');
+            link.setAttribute('download', 'raspiImage');
             link.innerHTML = `<img src="${data}" alt="AI Picture" />`;
             strip.insertBefore(link, strip.firstElementChild);
 
         }
         video.addEventListener('progress', StreamToCanvas2D);
     </script>
+<label class="switch">
+    <input type="checkbox">
+    <span class="slider round"></span>
+</label>
 </body>
 
 </html>
