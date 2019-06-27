@@ -1,34 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 
-</html>
-<html>
-
 <head>
     <base href="/">
-    <title>Page Title</title>
-    <style type="text/css">
-        .strip {
-            padding: 2rem;
-        }
-
-        .strip img {
-            width: 100px;
-            overflow-x: scroll;
-            padding: 0.8rem 0.8rem 2.5rem 0.8rem;
-            box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
-            background: white;
-        }
-    </style>
-
+    <title>PI_Motion</title>
+    <link rel='stylesheet' type="text/css" href='/styles/style.css' />
 </head>
 
 
 <body>
+    <label id=watsonOnOff class="switch">
+        <input type="checkbox">
+        <span class="slider round"></span>
+    </label> IBM Watson ON/OFF
+    <br>
+    <label id=takepicture class="switch">
+        <input type="checkbox">
+        <span class="slider round"></span>
+    </label> Picture SnapShot
+    <br>
     <script type="text/javascript" src="https://rawgit.com/131/h264-live-player/master/vendor/dist/http-live-player.js"></script>
-    <script src="/dist/bundle.js" charset="uft-8"></script>
     <script>
-        //Receiving <canvas> for H264(Rasberry PI Format) only loaded in memoy
+        //Receiving <canvas> from H264(Rasberry PI Format) only loaded in memoy
         const canvas = document.createElement("canvas");
         const video = document.createElement("video");
         let canvasD = document.createElement("canvas");
@@ -40,9 +33,9 @@
 
 
         // Streaming to Canvas from Raspberry PI with Express Socket
-        // <canvas> WEBGL(H264)
+        // <canvas> WEBGL(H264) This Canvas is not showing up on page it runs in the background
         const wsavc = new WSAvcPlayer(canvas, "webgl");
-        const protocol = window.location.protocol === "http:" ? "ws:" : "ws:"
+        const protocol = window.location.protocol === "http:" ? "ws:" : "wss:"
         wsavc.connect(protocol + '//' + window.location.host + '/video-stream');
 
         //Streaming to <video>(captureStream)
@@ -51,7 +44,7 @@
         video.srcObject = stream;
         video.play()
 
-        //Streaming to <canvas> ctx 2D
+        //Streaming to <canvasD> ctx 2D
         //Pixelisation Size
         var sample_size = 10
         // make an array to hold our old pixel values
@@ -60,6 +53,7 @@
         var threshold = 15;
         var alert = 0
 
+
         function StreamToCanvas2D() {
             const w = video.videoWidth;
             const h = video.videoHeight;
@@ -67,7 +61,9 @@
             canvasD.height = h;
             ctxD.drawImage(video, 0, 0, w, h);
             // get the screen's pixels data
+
             let data = ctxD.getImageData(0, 0, w, h).data;
+
             // loop through rows and columns
             for (var y = 0; y < h; y += sample_size) {
                 for (var x = 0; x < w; x += sample_size) {
@@ -101,24 +97,17 @@
             alert = 0
         };
 
-        function takePhoto() {
 
-            //take the data out of the canvas.
+        function takePhoto() {
             const strip = document.querySelector('.strip');
+            const post = new XMLHttpRequest();
             const data = canvas.toDataURL('image/jpeg');
+            //post.open("POST", "/receive");
+            //post.send(data);
             const link = document.createElement('a');
             link.href = data;
-            link.setAttribute('download', 'handsome');
+            link.setAttribute('download', 'raspiImage');
             link.innerHTML = `<img src="${data}" alt="AI Picture" />`;
-            // Sending image to Watson
-
-
-            const stringImage = data;
-            //const imgFile = new Base64Decode(stringImage);
-            import { decode } from 'base64-stream';
-            const imgFile = decode(stringImage)
-            console.log(stringImage)
-
             strip.insertBefore(link, strip.firstElementChild);
 
         }
