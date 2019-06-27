@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 
-</html>
-<html>
-
 <head>
     <base href="/">
-    <title>Page Title</title>
+    <title>PI_Motion</title>
     <link rel='stylesheet' type="text/css" href='/styles/style.css' />
 </head>
 
@@ -64,7 +61,9 @@
             canvasD.height = h;
             ctxD.drawImage(video, 0, 0, w, h);
             // get the screen's pixels data
+
             let data = ctxD.getImageData(0, 0, w, h).data;
+
             // loop through rows and columns
             for (var y = 0; y < h; y += sample_size) {
                 for (var x = 0; x < w; x += sample_size) {

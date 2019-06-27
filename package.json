@@ -1,7 +1,7 @@
 {
   "name": "pi_motion",
   "version": "1.0.0",
-  "description": "A pure-JS Raspberry Pi webcam",
+  "description": "PI Video Motion",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
