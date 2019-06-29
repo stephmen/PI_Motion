@@ -10,17 +10,21 @@
 
 <body>
     <label id=watsonOnOff class="switch">
+        IBM Watson ON/OFF
         <input type="checkbox">
         <span class="slider round"></span>
     </label> IBM Watson ON/OFF
     <br>
     <label id=takepicture class="switch">
-        <input type="checkbox">
+        <input type="checkbox" class="messageCheckbox">
         <span class="slider round"></span>
     </label> Picture SnapShot
     <br>
     <script type="text/javascript" src="https://rawgit.com/131/h264-live-player/master/vendor/dist/http-live-player.js"></script>
     <script>
+        var checkedValue = document.querySelector('.messageCheckbox:checked').value;
+        console.log(checkedValue);
+
         //Receiving <canvas> from H264(Rasberry PI Format) only loaded in memoy
         const canvas = document.createElement("canvas");
         const video = document.createElement("video");
