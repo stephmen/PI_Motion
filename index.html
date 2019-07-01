@@ -68,9 +68,9 @@
         //////////
 
         function streamToVideo() {
-        canvas.captureStream( stream =>{
+        canvas.captureStream( stream =>
           video.srcObject = stream
-          video.play()}
+          video.play()
         )
       }
       streamToVideo()
