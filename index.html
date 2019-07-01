@@ -67,11 +67,11 @@
         // video.play();
         //////////
 
-      function playVideo (stream, callback) {
+      function playVideo (stream) {
         video.srcObject = stream
-        callback()
+        video.play()
         }
-      playVideo(stream, video.play)
+      playVideo(stream)
 
     //     function streamToVideo() {
     //     canvas.captureStream( stream =>
