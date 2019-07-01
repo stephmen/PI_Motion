@@ -67,13 +67,16 @@
     //   video.play();
         //////////
 
-        function streamToVideo() {
-        canvas.captureStream( stream =>
-          video.srcObject = stream
-          video.play()
-        )
-      }
-      streamToVideo()
+        canvas.addEventListener('play', () => canvas.captureStream() )
+        console.log("So far so good")
+
+    //     function streamToVideo() {
+    //     canvas.captureStream( stream =>
+    //       video.srcObject = stream
+    //       return video.play()
+    //     )
+    //   }
+      
 
 
       //Streaming to <canvasD> ctx 2D
