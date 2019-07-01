@@ -62,23 +62,17 @@
 
 
         //////////
-        const stream = canvas.captureStream();
+        //Old Solution
         // video.srcObject = stream;
         // video.play();
         //////////
-
+        const stream = canvas.captureStream();
       function playVideo (stream) {
         video.srcObject = stream
         video.play()
         }
       playVideo(stream)
 
-    //     function streamToVideo() {
-    //     canvas.captureStream( stream =>
-    //       video.srcObject = stream
-    //       return video.play()
-    //     )
-    //   }
 
 
 
