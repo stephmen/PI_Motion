@@ -60,21 +60,30 @@
 
       //Streaming to <video>(captureStream)
 
+      //////////
+      //Old Solution
+      const stream = canvas.captureStream();
+      video.srcObject = stream;
+      var playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(_ => {
+            // Automatic playback started!
+            // Show playing UI.
+          })
+          .catch(error => {
+            // Auto-play was prevented
+            // Show paused UI.
+          });
+      }
 
-        //////////
-        //Old Solution
-        // video.srcObject = stream;
-        // video.play();
-        //////////
-        const stream = canvas.captureStream();
-      function playVideo (stream) {
-        video.srcObject = stream
-        video.play()
-        }
-      playVideo(stream)
-
-
-
+      //////////
+      //   const stream = canvas.captureStream();
+      // function playVideo (stream) {
+      //   video.srcObject = stream
+      //   video.play()
+      //   }
+      // playVideo(stream)
 
       //Streaming to <canvasD> ctx 2D
       //Pixelisation Size
