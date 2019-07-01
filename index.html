@@ -60,9 +60,18 @@
 
       //Streaming to <video>(captureStream)
 
-      const stream = canvas.captureStream();
-      video.srcObject = stream;
-      video.play();
+
+        //////////
+    //   const stream = canvas.captureStream();
+    //   video.srcObject = stream;
+    //   video.play();
+        //////////
+
+        canvas.captureStream( stream => {
+            video.srcObject = stream
+            video.play()
+        });
+
 
       //Streaming to <canvasD> ctx 2D
       //Pixelisation Size
