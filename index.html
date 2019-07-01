@@ -62,14 +62,16 @@
 
 
         //////////
-    //   const stream = canvas.captureStream();
-    //   video.srcObject = stream;
-    //   video.play();
+        const stream = canvas.captureStream();
+        // video.srcObject = stream;
+        // video.play();
         //////////
 
-        canvas.addEventListener(('play', (() => canvas.captureStream() => (stream) => console.log("OK"))
-
-
+      function playVideo (stream, callback) {
+        video.srcObject = stream
+        callback()
+        }
+      playVideo(stream, video.play)
 
     //     function streamToVideo() {
     //     canvas.captureStream( stream =>
