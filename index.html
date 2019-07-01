@@ -63,6 +63,7 @@
       //////////
       //Old Solution
       const stream = canvas.captureStream();
+      if(stream !== null){
       video.srcObject = stream;
       var playPromise = video.play();
       if (playPromise !== undefined) {
@@ -76,7 +77,9 @@
             // Show paused UI.
           });
       }
-
+    }else {
+      console.log("Stream not ready")
+    }
       //////////
       //   const stream = canvas.captureStream();
       // function playVideo (stream) {
