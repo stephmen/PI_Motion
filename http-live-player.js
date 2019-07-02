@@ -4524,7 +4524,7 @@
   },{"../broadway/Decoder":4,"../canvas/YUVCanvas":10,"../canvas/YUVWebGLCanvas":11,"../utils/Size":19,"debug":1,"uclass":47,"uclass/events":24}],24:[function(require,module,exports){
   "use strict";
 
-  var Class = require('../');
+  var Class = require('.');
   var guid  = require('mout/random/guid');
   var forIn  = require('mout/object/forIn');
 

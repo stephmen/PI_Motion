@@ -9,14 +9,14 @@
   <body>
 
   </body>
-    <script
-      type="text/javascript"
-      src="./public/http-live-player.js"
-    ></script>
     <!-- <script
       type="text/javascript"
-      src="https://rawgit.com/131/h264-live-player/master/vendor/dist/http-live-player.js"
+      src="./http-live-player.js"
     ></script> -->
+    <script
+      type="text/javascript"
+      src="https://rawgit.com/131/h264-live-player/master/vendor/dist/http-live-player.js"
+    ></script>
     <script>
 
 
@@ -26,6 +26,7 @@
       let canvasD = document.createElement("canvas");
       let ctxD = canvasD.getContext("2d");
       const pellicule = document.createElement("div");
+      document.body.appendChild(video).setAttribute("id", "video");
       document.body.appendChild(canvasD).setAttribute("id", "destination");
       document.body.appendChild(pellicule).setAttribute("class", "strip");
 
