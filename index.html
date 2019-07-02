@@ -24,8 +24,8 @@
       src="https://rawgit.com/131/h264-live-player/master/vendor/dist/http-live-player.js"
     ></script>
     <script>
-      var watsonChecked = ""
-      var snapShotChecked = ""
+      var watsonChecked = true
+      var snapShotChecked = true
       var watsonOnOff = document.querySelector("input[name=sendWatsonOn-Off]");
       watsonOnOff.addEventListener("change", function() {
         if (this.checked) {
@@ -138,7 +138,7 @@
             previous_frame[pos] = r;
           }
         }
-        if (alert > 60 & snapShotChecked ) {
+        if (alert > 60 && snapShotChecked == true ) {
           console.log(alert);
           takePhoto();
         }
