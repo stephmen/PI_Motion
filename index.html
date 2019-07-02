@@ -24,6 +24,8 @@
       src="https://rawgit.com/131/h264-live-player/master/vendor/dist/http-live-player.js"
     ></script>
     <script>
+      var watsonChecked = ""
+      var snapShotChecked = ""
       var watsonOnOff = document.querySelector("input[name=sendWatsonOn-Off]");
       watsonOnOff.addEventListener("change", function() {
         if (this.checked) {
@@ -37,9 +39,11 @@
       );
       pictureSnapshot.addEventListener("change", function() {
         if (this.checked) {
-          console.log("Checked");
+          var snapShotChecked = true;
+          console.log(snapShotChecked);
         } else {
-          console.log("Unchecked");
+          var snapShotChecked = false;
+          console.log(snapShotChecked);
         }
       });
 
@@ -75,6 +79,7 @@
           .catch(error => {
             // Auto-play was prevented
             // Show paused UI.
+            console.log(error)
           });
       }
     }
@@ -133,7 +138,7 @@
             previous_frame[pos] = r;
           }
         }
-        if (alert > 60) {
+        if (alert > 60 & snapShotChecked ) {
           console.log(alert);
           takePhoto();
         }
