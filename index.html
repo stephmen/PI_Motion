@@ -7,27 +7,20 @@
   </head>
 
   <body>
-    <label class="switch">
-      <input type="checkbox" name="sendWatsonOn-Off" />
-      <span class="slider round"></span>
-    </label>
-    IBM Watson ON/OFF
-    <br />
-    <label id="takepicture" class="switch">
-      <input type="checkbox" name="pictureSnapshot" />
-      <span class="slider round"></span>
-    </label>
-    Picture SnapShot
-    <br />
+
   </body>
     <script
       type="text/javascript"
-      src="https://rawgit.com/131/h264-live-player/master/vendor/dist/http-live-player.js"
+      src="./public/http-live-player.js"
     ></script>
+    <!-- <script
+      type="text/javascript"
+      src="https://rawgit.com/131/h264-live-player/master/vendor/dist/http-live-player.js"
+    ></script> -->
     <script>
 
 
-      //Receiving <canvas> from H264(Rasberry PI Format) only loaded in memoy
+      //Receiving <canvas> from H264(Rasberry PI Format) only loaded in memory
       const canvas = document.createElement("canvas");
       const video = document.createElement("video");
       let canvasD = document.createElement("canvas");
@@ -63,13 +56,7 @@
           });
       }
     }
-      //////////
-      //   const stream = canvas.captureStream();
-      // function playVideo (stream) {
-      //   video.srcObject = stream
-      //   video.play()
-      //   }
-      // playVideo(stream)
+
 
       //Streaming to <canvasD> ctx 2D
       //Pixelisation Size
@@ -141,5 +128,5 @@
       }
       video.addEventListener("progress", StreamToCanvas2D);
     </script>
-  
+
 </html>
