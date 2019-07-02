@@ -19,13 +19,33 @@
     </label>
     Picture SnapShot
     <br />
-  </body>
     <script
       type="text/javascript"
       src="https://rawgit.com/131/h264-live-player/master/vendor/dist/http-live-player.js"
     ></script>
     <script>
-
+      var watsonChecked = true
+      var snapShotChecked = true
+      var watsonOnOff = document.querySelector("input[name=sendWatsonOn-Off]");
+      watsonOnOff.addEventListener("change", function() {
+        if (this.checked) {
+          console.log("Checked");
+        } else {
+          console.log("Unchecked");
+        }
+      });
+      var pictureSnapshot = document.querySelector(
+        "input[name=pictureSnapshot]"
+      );
+      pictureSnapshot.addEventListener("change", function() {
+        if (this.checked) {
+          var snapShotChecked = true;
+          console.log(snapShotChecked);
+        } else {
+          var snapShotChecked = false;
+          console.log(snapShotChecked);
+        }
+      });
 
       //Receiving <canvas> from H264(Rasberry PI Format) only loaded in memoy
       const canvas = document.createElement("canvas");
