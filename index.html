@@ -48,7 +48,9 @@
             video.srcObject = stream
             video.play()
           }else{
-            console.log("No Video")
+            console.log("No Video");
+            const stream = canvas.captureStream();
+            playVideo();
           }
         }
         // video.srcObject = stream;
