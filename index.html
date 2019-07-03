@@ -42,16 +42,16 @@
         //////////
         //Old Solution
         const stream = canvas.captureStream();
-        setTimeout(playVideo(),2000);
-        //video.addEventListener("progress", StreamToCanvas2D);
-        function playVideo () {
-          if (stream ==! null) {
-            video.srcObject = stream
-            video.play()
-          }
-        }
-        // video.srcObject = stream;
-        // video.play();
+        video.srcObject = stream;
+        video.play();
+        // setTimeout(playVideo(),2000);
+        // //video.addEventListener("progress", StreamToCanvas2D);
+        // function playVideo () {
+        //   if (stream ==! null) {
+        //     video.srcObject = stream
+        //     video.play()
+        //   }
+        // }
 
         // canvas.capture
 
