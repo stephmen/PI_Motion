@@ -37,7 +37,7 @@
       function firstVid (callback) {
         const wsavc = new WSAvcPlayer(canvas, "webgl");
         const protocol = window.location.protocol === "http:" ? "ws:" : "wss:";
-        return wsavc.connect(protocol + "//" + "192.168.0.178" + "/video-stream");
+        return wsavc.connect(protocol + "//" + "192.168.0.178:8181" + "/video-stream");
         callback()
       }
 
