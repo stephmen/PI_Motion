@@ -33,8 +33,8 @@
 
       // Streaming to Canvas from Raspberry PI with Express Socket
       // <canvas> WEBGL(H264) This Canvas is not showing up on page it runs in the background
-      firtsVid(secondVid)
-      function firtsVid (callback) {
+      firstVid(secondVid)
+      function firstVid (callback) {
         const wsavc = new WSAvcPlayer(canvas, "webgl");
         const protocol = window.location.protocol === "http:" ? "ws:" : "wss:";
         return wsavc.connect(protocol + "//" + window.location.host + "/video-stream");
@@ -46,9 +46,10 @@
         //////////
         //Old Solution
         function secondVid () {
-          const stream = canvas.captureStream();
-          video.srcObject = stream;
-          return video.play();
+          return console.log("Call Back Working")
+          // const stream = canvas.captureStream();
+          // video.srcObject = stream;
+          // return video.play();
         }
         //secondVid()
         // setTimeout(playVideo(),2000);
