@@ -41,9 +41,12 @@
 
         //////////
         //Old Solution
-        const stream = canvas.captureStream();
-        video.srcObject = stream;
-        video.play();
+        function secondVid () {
+          const stream = canvas.captureStream();
+          video.srcObject = stream;
+          return video.play();
+        }
+        secondVid()
         // setTimeout(playVideo(),2000);
         // //video.addEventListener("progress", StreamToCanvas2D);
         // function playVideo () {
