@@ -42,16 +42,12 @@
         //////////
         //Old Solution
         const stream = canvas.captureStream();
-        playVideo();
+        setTimeout(playVideo(),2000);
         //video.addEventListener("progress", StreamToCanvas2D);
         function playVideo () {
           if (stream ==! null) {
             video.srcObject = stream
             video.play()
-          }else{
-            console.log("No Video");
-            const stream = canvas.captureStream();
-            playVideo();
           }
         }
         // video.srcObject = stream;
