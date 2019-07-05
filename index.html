@@ -19,6 +19,7 @@
     </label>
     Picture SnapShot
     <br />
+    <button> START </button>
     <script
       type="text/javascript"
       src="https://rawgit.com/131/h264-live-player/master/vendor/dist/http-live-player.js"
@@ -46,7 +47,11 @@
           console.log(snapShotChecked);
         }
       });
-
+      const button = document.querySelector("button");
+        button.addEventListener("click",function () {
+          console.log("button worked")
+          video.play();
+        })
       //Receiving <canvas> from H264(Rasberry PI Format) only loaded in memoy
       const canvas = document.createElement("canvas");
       const video = document.createElement("video");
