@@ -26,7 +26,7 @@
     <button>START</button>
   </body>
   <script>
-
+    var snapShotChecked = "";
     const button = document.querySelector("button");
     button.addEventListener("click", function() {
       console.log("button worked");
@@ -118,7 +118,7 @@
                 }
                 var pictureSnapshot = document.querySelector("input[name=pictureSnapshot]");
                 pictureSnapshot.addEventListener("change", function() {
-                  var snapShotChecked = this.checked
+                snapShotChecked = this.checked
                 });
                 if (alert > 60 && snapShotChecked === true) {
                   console.log(alert);
