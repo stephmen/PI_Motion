@@ -128,13 +128,7 @@
                 }
                 var pictureSnapshot = document.querySelector("input[name=pictureSnapshot]");
                 pictureSnapshot.addEventListener("change", function() {
-                  if (this.checked) {
-                    var snapShotChecked = this.checked;
-                    return snapShotChecked
-                  } else {
-                    var snapShotChecked = this.checked ;
-                    return snapShotChecked
-                  }
+                console.log(this.checked)
                 });
 
                 if (alert > 60 && snapShotChecked === true) {
