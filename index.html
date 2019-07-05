@@ -69,6 +69,7 @@
               });
             }
           }
+          video.addEventListener("progress", StreamToCanvas2D);
 
           //Streaming to <canvasD> ctx 2D
             //Pixelisation Size
@@ -142,11 +143,9 @@
                 }
                 const link = document.createElement("a");
                 link.href = data;
-      link.setAttribute("download", "raspiImage");
-      link.innerHTML = `<img src="${data}" alt="AI Picture" />`;
-      console.log(snapShotChecked)
-      strip.insertBefore(link, strip.firstElementChild);
+                link.setAttribute("download", "raspiImage");
+                link.innerHTML = `<img src="${data}" alt="AI Picture" />`;
+                strip.insertBefore(link, strip.firstElementChild);
     }
-    video.addEventListener("progress", StreamToCanvas2D);
   </script>
 </html>
