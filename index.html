@@ -40,10 +40,10 @@
       );
       pictureSnapshot.addEventListener("change", function() {
         if (this.checked) {
-          var snapShotChecked = true;
+          var snapShotChecked = this.checked;
           console.log(snapShotChecked);
         } else {
-          var snapShotChecked = false;
+          var snapShotChecked = this.checked ;
           console.log(snapShotChecked);
         }
       });
