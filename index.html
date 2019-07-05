@@ -26,17 +26,7 @@
     <button>START</button>
   </body>
   <script>
-    var watsonChecked;
-    var snapShotChecked ="";
-    var watsonOnOff = document.querySelector("input[name=sendWatsonOn-Off]");
-    watsonOnOff.addEventListener("change", function() {
-      if (this.checked) {
 
-        console.log(this.checked);
-      } else {
-        console.log(this.checked);
-      }
-    });
     const button = document.querySelector("button");
     button.addEventListener("click", function() {
       console.log("button worked");
@@ -128,10 +118,8 @@
                 }
                 var pictureSnapshot = document.querySelector("input[name=pictureSnapshot]");
                 pictureSnapshot.addEventListener("change", function() {
-                snapShotChecked = this.checked
-                console.log(this.checked)
+                  var snapShotChecked = this.checked
                 });
-
                 if (alert > 60 && snapShotChecked === true) {
                   console.log(alert);
                   takePhoto();
@@ -140,13 +128,19 @@
               }
 
               function takePhoto() {
-      const strip = document.querySelector(".strip");
-      const post = new XMLHttpRequest();
-      const data = canvas.toDataURL("image/jpeg");
-      //post.open("POST", "/receive");
-      //post.send(data);
-      const link = document.createElement("a");
-      link.href = data;
+                const strip = document.querySelector(".strip");
+                const post = new XMLHttpRequest();
+                const data = canvas.toDataURL("image/jpeg");
+                var watsonOnOff = document.querySelector("input[name=sendWatsonOn-Off]");
+                watsonOnOff.addEventListener("change", function() {
+                var watsonChecked = this.checked
+                });
+                if(watsonChecked === true ){
+                post.open("POST", "/receive");
+                post.send(data);
+                }
+                const link = document.createElement("a");
+                link.href = data;
       link.setAttribute("download", "raspiImage");
       link.innerHTML = `<img src="${data}" alt="AI Picture" />`;
       console.log(snapShotChecked)
