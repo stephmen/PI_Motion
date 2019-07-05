@@ -39,7 +39,7 @@
       let canvasD = document.createElement("canvas");
       let ctxD = canvasD.getContext("2d");
       const pellicule = document.createElement("div");
-      document.body.children[4].appendChild(canvasD).setAttribute("id", "destination");
+      document.body.appendChild(canvasD).setAttribute("id", "destination");
       document.body.canvasD.appendChild(pellicule).setAttribute("class", "strip");
 
       // Streaming to Canvas from Raspberry PI with Express Socket
