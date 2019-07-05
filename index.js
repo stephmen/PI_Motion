@@ -1,8 +1,6 @@
 const express = require('express');
-const raspividStream = require('raspivid-stream');
 const fs = require('fs');
 const app = express();
-const wss = require('express-ws')(app);
 const path = require('path');
 var spawn = require('child_process').spawn;
 
