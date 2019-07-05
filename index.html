@@ -99,10 +99,10 @@
     var alert = 0;
 
     function StreamToCanvas2D() {
-      const w = 640;
-      const h = 480;
-      // const w = video.videoWidth;
-      // const h = video.videoHeight;
+      // const w = 640;
+      // const h = 480;
+      const w = video.videoWidth;
+      const h = video.videoHeight;
       canvasD.width = w;
       canvasD.height = h;
       ctxD.drawImage(video, 0, 0, w, h);
@@ -138,7 +138,7 @@
           previous_frame[pos] = r;
         }
       }
-      let snapShotChecked = true;
+
       if (alert > 60 && snapShotChecked === true) {
         console.log(alert);
         takePhoto();
