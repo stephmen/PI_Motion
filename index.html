@@ -134,7 +134,7 @@
                 const data = canvas.toDataURL("image/jpeg");
                 var watsonOnOff = document.querySelector("input[name=sendWatsonOn-Off]");
                 watsonOnOff.addEventListener("change", function() {
-                var watsonChecked = this.checked
+                watsonChecked = this.checked
                 });
                 if(watsonChecked === true ){
                 post.open("POST", "/receive");
