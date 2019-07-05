@@ -5,6 +5,10 @@
     <title>PI_Motion</title>
     <link rel="stylesheet" type="text/css" href="/styles/style.css" />
   </head>
+  <script
+    type="text/javascript"
+    src="https://rawgit.com/131/h264-live-player/master/vendor/dist/http-live-player.js"
+  ></script>
 
   <body>
     <label class="switch">
@@ -20,10 +24,7 @@
     Picture SnapShot
     <br />
     <button> START </button>
-    <script
-      type="text/javascript"
-      src="https://rawgit.com/131/h264-live-player/master/vendor/dist/http-live-player.js"
-    ></script>
+  </body>
     <script>
       var watsonChecked = true
       var snapShotChecked = true
@@ -166,5 +167,4 @@
       }
       video.addEventListener("progress", StreamToCanvas2D);
     </script>
-  </body>
 </html>
