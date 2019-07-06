@@ -28,13 +28,13 @@ app.ws('/video-stream', (ws, req) => {
   var videoStream = spawn('/opt/vc/bin/raspivid', ['-hf', '-w', '1280', '-h', '1024', '-t', '999999999', '-fps', '20', '-b', '5000000', '-o', '-']);
 
 
-  videoStream.on('data', (data) => {
+  videoStream.stdout.pipe(on('data', (data) => {
     ws.send(data, {
       binary: true
     }, (error) => {
       if (error) console.error(error);
     });
-  });
+  }));
 
   ws.on('close', () => {
     console.log('Client left');
