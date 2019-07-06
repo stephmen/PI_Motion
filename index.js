@@ -19,13 +19,13 @@ app.ws('/video-stream', (ws, req) => {
     height: '480',
   }));
 
-  // const videoStream = raspividStream({
-  //   width: 640,
-  //   height: 480,
-  //   rotation: 180
-  // });
+  const videoStream = raspividStream({
+    width: 640,
+    height: 480,
+    rotation: 180
+  });
 
-  var videoStream = spawn('/opt/vc/bin/raspivid', ['-hf', '-w', '1280', '-h', '1024', '-t', '999999999', '-fps', '20', '-b', '5000000', '-o', '-']);
+  //var videoStream = spawn('/opt/vc/bin/raspivid', ['-hf', '-w', '1280', '-h', '1024', '-t', '999999999', '-fps', '20', '-b', '5000000', '-o', '-']);
 
 
   videoStream.on('data', (data) => {
