@@ -22,18 +22,11 @@ app.ws('/video-stream', (ws, req) => {
     height: '480',
   }));
 
-
-  //var videoStream = spawn('/opt/vc/bin/raspivid', ['-hf', '-w', '1280', '-h', '1024', '-t', '999999999', '-fps', '20', '-b', '5000000', '-o', '-']);
-
   const videoStream = raspividStream({
     width: 640,
     height: 480,
     rotation: 180
   });
-
-  //var videoStream = spawn('/opt/vc/bin/raspivid', ['-hf', '-w', '1280', '-h', '1024', '-t', '999999999', '-fps', '20', '-b', '5000000', '-o', '-']);
-
-
 
   videoStream.on('data', (data) => {
     ws.send(data, {
@@ -48,18 +41,12 @@ app.ws('/video-stream', (ws, req) => {
     videoStream.removeAllListeners('data');
   });
 });
-/////////////////////////////////////////////////////////
-/////https://stackoverflow.com/questions/31359006/html-canvas-output-jpg-image-to-server-when-button-is-pressed
-///////Here we GO////////////////////////////////////////
-// Handle POST from xxx/receive
+
 app.post('/receive', function (request, respond) {
-  // The image data will be store here
   console.log("The Image Was Triggered")
   var body = '';
-  // Target file path
   var filePath = __dirname + '/Images/canvas.jpg';
   console.log(filePath)
-  //
   request.on('data', function (data) {
     body += data;
   });
@@ -85,7 +72,6 @@ app.post('/receive', function (request, respond) {
       var images_file = fs.createReadStream('./Images/canvas.jpg');
       //var owners = ["me"];
       //var threshold = 0.6;
-
       var params = {
         images_file: images_file,
         //owners: owners,
@@ -99,6 +85,7 @@ app.post('/receive', function (request, respond) {
           console.log(JSON.stringify(response, null, 2))
         }
       });
+      respond.send("this is a first test")
       respond.end();
     });
   });
