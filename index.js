@@ -4,7 +4,7 @@ const fs = require('fs');
 const app = express();
 const wss = require('express-ws')(app);
 const path = require('path');
-const spawn = require('spawn');
+const spawn = require('child_process').spawn;
 
 
 app.use(express.static('dist'))
