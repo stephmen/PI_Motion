@@ -122,7 +122,7 @@
                 pictureSnapshot.addEventListener("change", function() {
                 snapShotChecked = this.checked
                 });
-                if (alert > 30 && snapShotChecked === true) {
+                if (alert > 50 && snapShotChecked === true) {
                   console.log(alert);
                   takePhoto();
                 }
@@ -131,13 +131,13 @@
 
               function takePhoto() {
                 const strip = document.querySelector(".strip");
-                const post = new XMLHttpRequest();
                 const data = canvas.toDataURL("image/jpeg");
                 var watsonOnOff = document.querySelector("input[name=sendWatsonOn-Off]");
                 watsonOnOff.addEventListener("change", function() {
-                watsonChecked = this.checked
+                  watsonChecked = this.checked
                 });
                 if(watsonChecked === true ){
+                const post = new XMLHttpRequest();
                 post.open("POST", "/receive");
                 post.send(data);
                 }
