@@ -135,7 +135,7 @@
                 var watsonOnOff = document.querySelector("input[name=sendWatsonOn-Off]");
                 watsonOnOff.addEventListener("change", function() {
                   watsonChecked = this.checked
-                  console.log(watsonChecked);
+                  console.log(this.checked);
                 });
                 if(watsonChecked === true ){
                 const post = new XMLHttpRequest();
