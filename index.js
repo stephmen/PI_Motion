@@ -83,8 +83,6 @@ app.post('/receive', function (request, respond) {
           console.log(err);
         } else {
           console.log(JSON.stringify(response, null, 2))
-          // respond.send("this is a first test")
-          // respond.end();
         }
       });
 
