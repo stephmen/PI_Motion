@@ -85,7 +85,7 @@ app.post('/receive', function (request, respond) {
           console.log(JSON.stringify(response, null, 2))
         }
       });
-
+      respond.end();
     });
   });
 });
