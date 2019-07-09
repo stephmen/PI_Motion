@@ -86,7 +86,7 @@ app.post('/receive', function (request, respond) {
 
         }
       });
-      respond.end(response);
+      respond.end();
     });
   });
 });
