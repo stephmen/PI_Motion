@@ -83,6 +83,7 @@ app.post('/receive', function (request, respond) {
           console.log(err);
         } else {
           console.log(JSON.stringify(response, null, 2))
+          respond.json(response);
         }
       });
       respond.end();
@@ -91,7 +92,6 @@ app.post('/receive', function (request, respond) {
 });
 //////////////////////////////////////////////////////////
 /////////////////END///////////////////////////////////////
-
 app.use((err, req, res, next) => {
   console.error(err);
   next(err);
