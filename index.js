@@ -50,7 +50,7 @@ app.post('/receive', function (req, res) {
   req.on('data', function (data) {
     body += data;
   });
-
+  res.send('SVP Merci')
   // When whole image uploaded complete.
   req.on('end', function () {
     // Get rid of the image header as we only need the data parts after it.
