@@ -83,10 +83,10 @@ app.post('/receive', function (request, respond) {
           console.log(err);
         } else {
           console.log(JSON.stringify(response, null, 2))
-          respond.json(response);
+
         }
       });
-      respond.end();
+      respond.end(response);
     });
   });
 });
