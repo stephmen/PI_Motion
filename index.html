@@ -27,7 +27,6 @@
     <button>START</button>
   </body>
   <script>
-    window.onload(video.play())
     var snapShotChecked = "";
     var watsonChecked = "";
     const button = document.querySelector("button");
@@ -52,8 +51,6 @@
 
         //Streaming to <video>(captureStream)
 
-          //////////
-          //Old Solution
           const stream = canvas.captureStream();
           if (stream !== null) {
             video.srcObject = stream;
