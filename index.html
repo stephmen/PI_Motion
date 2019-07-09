@@ -121,6 +121,7 @@
                 var pictureSnapshot = document.querySelector("input[name=pictureSnapshot]");
                 pictureSnapshot.addEventListener("change", function() {
                 snapShotChecked = this.checked
+                console.log(this.checked)
                 });
                 if (alert > 20 && snapShotChecked === true) {
                   console.log(alert);
