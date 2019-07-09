@@ -1,3 +1,5 @@
+howto.txt
+
 # Logs
 logs
 *.log
@@ -10,6 +12,7 @@ yarn-error.log*
 .AppleDouble
 WatsonAPI.JS
 WatsonVR.js
+
 
 # Runtime data
 pids
