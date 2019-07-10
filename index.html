@@ -28,7 +28,7 @@
   <script>
     let snapShotChecked = "";
     let watsonChecked = "";
-    let watsonResponse = "";
+    let watsonRan = false;
 
     const button = document.querySelector("button");
     button.addEventListener("click", function() {
@@ -140,7 +140,7 @@
         watsonChecked = this.checked;
         console.log("watsonChecked");
       });
-      if (watsonChecked === true && watsonRan === ) {
+      if (watsonChecked === true && watsonRan === false) {
         const post = new XMLHttpRequest();
         post.open("POST", "/receive");
         post.send(data);
@@ -149,6 +149,7 @@
             if (post.status === 200) {
               console.log(post.response);
               console.log(JSON.parse(post.responseText));
+              watson = true
             }
           }
         };
