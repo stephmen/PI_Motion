@@ -141,8 +141,14 @@
                 const post = new XMLHttpRequest();
                 post.open("POST", "/receive");
                 post.send(data);
-                let watsonResponse = post.responseText()
-
+                post.onload = function () {
+    if (post.readyState === post.DONE) {
+        if (post.status === 200) {
+            console.log(post.response);
+            console.log(post.responseText);
+        }
+    }
+};
 
                 }
                 const watsRes = document.createElement("p");
