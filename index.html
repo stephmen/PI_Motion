@@ -147,9 +147,9 @@
         post.onload = function() {
           if (post.readyState === post.DONE) {
             if (post.status === 200) {
-              console.log(post.response);
+              //console.log(post.response);
               console.log(JSON.parse(post.responseText));
-              watson = true
+              watsonRan = true
             }
           }
         };
