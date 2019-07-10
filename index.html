@@ -140,7 +140,7 @@
         watsonChecked = this.checked;
         console.log("watsonChecked");
       });
-      if (watsonChecked === true && watsonRan === false) {
+      if (watsonChecked === true) {
         const post = new XMLHttpRequest();
         post.open("POST", "/receive");
         post.send(data);
@@ -149,7 +149,6 @@
             if (post.status === 200) {
               //console.log(post.response);
               console.log(JSON.parse(post.responseText));
-              watsonRan = true
             }
           }
         };
