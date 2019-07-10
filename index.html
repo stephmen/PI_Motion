@@ -11,7 +11,6 @@
   ></script>
 
   <body>
-
     <label class="switch">
       <input type="checkbox" name="sendWatsonOn-Off" />
       <span class="slider round"></span>
@@ -27,139 +26,139 @@
     <button>START</button>
   </body>
   <script>
-    var snapShotChecked = "";
-    var watsonChecked = "";
+    let snapShotChecked = "";
+    let watsonChecked = "";
+    let watsonResponse = "";
+
     const button = document.querySelector("button");
     button.addEventListener("click", function() {
       console.log("button worked");
       video.play();
     });
     //Receiving <canvas> from H264(Rasberry PI Format) only loaded in memoy
-      const canvas = document.createElement("canvas");
-      const video = document.createElement("video");
-      let canvasD = document.createElement("canvas");
-      let ctxD = canvasD.getContext("2d");
-      const pellicule = document.createElement("div");
-      document.body.appendChild(canvasD).setAttribute("id", "destination");
-      document.body.appendChild(pellicule).setAttribute("class", "strip");
+    const canvas = document.createElement("canvas");
+    const video = document.createElement("video");
+    let canvasD = document.createElement("canvas");
+    let ctxD = canvasD.getContext("2d");
+    const pellicule = document.createElement("div");
+    document.body.appendChild(canvasD).setAttribute("id", "destination");
+    document.body.appendChild(pellicule).setAttribute("class", "strip");
 
-      // Streaming to Canvas from Raspberry PI with Express Socket
-      // <canvas> WEBGL(H264) This Canvas is not showing up on page it runs in the background
-        const wsavc = new WSAvcPlayer(canvas, "webgl");
-        const protocol = window.location.protocol === "http:" ? "ws:" : "wss:";
-        wsavc.connect(protocol + "//" + window.location.host + "/video-stream");
+    // Streaming to Canvas from Raspberry PI with Express Socket
+    // <canvas> WEBGL(H264) This Canvas is not showing up on page it runs in the background
+    const wsavc = new WSAvcPlayer(canvas, "webgl");
+    const protocol = window.location.protocol === "http:" ? "ws:" : "wss:";
+    wsavc.connect(protocol + "//" + window.location.host + "/video-stream");
 
-        //Streaming to <video>(captureStream)
+    //Streaming to <video>(captureStream)
 
-          const stream = canvas.captureStream();
-          if (stream !== null) {
-            video.srcObject = stream;
-            var playPromise = video.play();
-            if (playPromise !== undefined) {
-              playPromise
-              .then(_ => {
-                // Automatic playback started!
-                // Show playing UI.
-              })
-              .catch(error => {
-                // Auto-play was prevented
-                // Show paused UI.
-                console.log(error);
-              });
+    const stream = canvas.captureStream();
+    if (stream !== null) {
+      video.srcObject = stream;
+      var playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(_ => {
+            // Automatic playback started!
+            // Show playing UI.
+          })
+          .catch(error => {
+            // Auto-play was prevented
+            // Show paused UI.
+            console.log(error);
+          });
+      }
+    }
+    video.addEventListener("progress", StreamToCanvas2D);
+
+    //Streaming to <canvasD> ctx 2D
+    //Pixelisation Size
+    var sample_size = 10;
+    // make an array to hold our old pixel values
+    var previous_frame = [];
+    // choose a brightness threshold, if the old pixel values differs enough then we know there's movement
+    var threshold = 15;
+    var alert = 0;
+
+    function StreamToCanvas2D() {
+      const w = video.videoWidth;
+      const h = video.videoHeight;
+      canvasD.width = w;
+      canvasD.height = h;
+      ctxD.drawImage(video, 0, 0, w, h);
+      // get the screen's pixels data
+
+      let data = ctxD.getImageData(0, 0, w, h).data;
+
+      // loop through rows and columns
+      for (var y = 0; y < h; y += sample_size) {
+        for (var x = 0; x < w; x += sample_size) {
+          //Formula to get the pixel position in the array
+          var pos = (x + y * w) * 4;
+          //Getting pixel colors R G B
+          var r = data[pos];
+          var g = data[pos + 1];
+          var b = data[pos + 2];
+          // draw the pixels as blocks of colours
+          // first check if it's not the first frame, but
+          // seeing of when the previous_frame array
+          // is not we empty, and then only draw something if there's
+
+          if (
+            previous_frame[pos] &&
+            Math.abs(previous_frame[pos] - r) > threshold
+          ) {
+            ctxD.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
+            ctxD.fillRect(x, y, sample_size, sample_size);
+            alert = alert + 1;
+            // a significant colour difference
+          }
+
+          // store these colour values to compare to the next frame
+          previous_frame[pos] = r;
+        }
+      }
+      var pictureSnapshot = document.querySelector(
+        "input[name=pictureSnapshot]"
+      );
+      pictureSnapshot.addEventListener("change", function() {
+        snapShotChecked = this.checked;
+        console.log(this.checked);
+      });
+      if (alert > 20 && snapShotChecked === true) {
+        console.log(alert);
+        takePhoto();
+      }
+      alert = 0;
+    }
+
+    function takePhoto() {
+      const strip = document.querySelector(".strip");
+      const data = canvas.toDataURL("image/jpeg");
+      var watsonOnOff = document.querySelector("input[name=sendWatsonOn-Off]");
+      watsonOnOff.addEventListener("change", function() {
+        watsonChecked = this.checked;
+        console.log("watsonChecked");
+      });
+      if (watsonChecked === true && watsonRan === ) {
+        const post = new XMLHttpRequest();
+        post.open("POST", "/receive");
+        post.send(data);
+        post.onload = function() {
+          if (post.readyState === post.DONE) {
+            if (post.status === 200) {
+              console.log(post.response);
+              console.log(JSON.parse(post.responseText));
             }
           }
-          video.addEventListener("progress", StreamToCanvas2D);
+        };
+      }
+      const link = document.createElement("a");
+      link.href = data;
+      link.setAttribute("download", "raspiImage");
+      link.innerHTML = `<img src="${data}" alt="AI Picture" />`;
+      strip.insertBefore(link, strip.firstElementChild);
 
-          //Streaming to <canvasD> ctx 2D
-            //Pixelisation Size
-            var sample_size = 10;
-            // make an array to hold our old pixel values
-            var previous_frame = [];
-            // choose a brightness threshold, if the old pixel values differs enough then we know there's movement
-            var threshold = 15;
-            var alert = 0;
-
-            function StreamToCanvas2D() {
-              const w = video.videoWidth;
-              const h = video.videoHeight;
-              canvasD.width = w;
-              canvasD.height = h;
-              ctxD.drawImage(video, 0, 0, w, h);
-              // get the screen's pixels data
-
-              let data = ctxD.getImageData(0, 0, w, h).data;
-
-              // loop through rows and columns
-              for (var y = 0; y < h; y += sample_size) {
-                for (var x = 0; x < w; x += sample_size) {
-                  //Formula to get the pixel position in the array
-                  var pos = (x + y * w) * 4;
-                  //Getting pixel colors R G B
-                  var r = data[pos];
-                  var g = data[pos + 1];
-                  var b = data[pos + 2];
-                  // draw the pixels as blocks of colours
-                  // first check if it's not the first frame, but
-                  // seeing of when the previous_frame array
-                  // is not we empty, and then only draw something if there's
-
-                  if (
-                    previous_frame[pos] &&
-                    Math.abs(previous_frame[pos] - r) > threshold
-                    ) {
-                      ctxD.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
-                      ctxD.fillRect(x, y, sample_size, sample_size);
-                      alert = alert + 1;
-                      // a significant colour difference
-                    }
-
-                    // store these colour values to compare to the next frame
-                    previous_frame[pos] = r;
-                  }
-                }
-                var pictureSnapshot = document.querySelector("input[name=pictureSnapshot]");
-                pictureSnapshot.addEventListener("change", function() {
-                snapShotChecked = this.checked
-                console.log(this.checked)
-                });
-                if (alert > 20 && snapShotChecked === true) {
-                  console.log(alert);
-                  takePhoto();
-                }
-                alert = 0;
-              }
-
-              function takePhoto() {
-                const strip = document.querySelector(".strip");
-                const data = canvas.toDataURL("image/jpeg");
-                var watsonOnOff = document.querySelector("input[name=sendWatsonOn-Off]");
-                watsonOnOff.addEventListener("change", function() {
-                  watsonChecked = this.checked
-                  console.log("watsonChecked");
-                });
-                if(watsonChecked === true ){
-                const post = new XMLHttpRequest();
-                post.open("POST", "/receive");
-                post.send(data);
-                post.onload = function () {
-    if (post.readyState === post.DONE) {
-        if (post.status === 200) {
-            console.log(post.response);
-            console.log(post.responseText);
-        }
-    }
-};
-
-                }
-                const watsRes = document.createElement("p");
-                watsRes.innerHTML = watsonResponse
-                const link = document.createElement("a");
-                link.href = data;
-                link.setAttribute("download", "raspiImage");
-                link.innerHTML = `<img src="${data}" alt="AI Picture" />`;
-                strip.insertBefore(link, strip.firstElementChild);
-                strip.append(watsRes)
-                console.log(watsonResponse)
     }
   </script>
 </html>
