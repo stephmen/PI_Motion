@@ -147,8 +147,8 @@
         post.onload = function() {
           if (post.readyState === post.DONE) {
             if (post.status === 200) {
-              //console.log(post.response);
-              console.log(JSON.parse(post.responseText));
+              console.log(post.response);
+              //console.log(JSON.parse(post.responseText));
             }
           }
         };
