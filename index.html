@@ -141,14 +141,19 @@
                 const post = new XMLHttpRequest();
                 post.open("POST", "/receive");
                 post.send(data);
-                console.log(post.responseText)
+                let watsonResponse = post.responseText()
+
 
                 }
+                const watsRes = decument.createElement("p");
+                watsRes.innerHTML = watsonResponse
                 const link = document.createElement("a");
                 link.href = data;
                 link.setAttribute("download", "raspiImage");
                 link.innerHTML = `<img src="${data}" alt="AI Picture" />`;
                 strip.insertBefore(link, strip.firstElementChild);
+                strip.append(watsRes)
+                console.log(watsonResponse)
     }
   </script>
 </html>
