@@ -77,7 +77,7 @@ app.post('/receive', function (req, res) {
           console.log(JSON.stringify(response, null, 2))
         }
       });
-      res.end();
+      res.send('Hope this is finaly working');
     });
   });
 });
