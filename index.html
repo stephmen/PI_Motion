@@ -28,13 +28,20 @@
   <script>
     let snapShotChecked = "";
     let watsonChecked = "";
-    let watsonRan = false;
+    let watsonAnalysis
 
     const button = document.querySelector("button");
     button.addEventListener("click", function() {
       console.log("button worked");
       video.play();
     });
+    let pictureSnapshot = document.querySelector(
+        "input[name=pictureSnapshot]"
+      );
+      pictureSnapshot.addEventListener("change", function() {
+        snapShotChecked = this.checked;
+        console.log(this.checked);
+      });
     //Receiving <canvas> from H264(Rasberry PI Format) only loaded in memoy
     const canvas = document.createElement("canvas");
     const video = document.createElement("video");
@@ -118,13 +125,7 @@
           previous_frame[pos] = r;
         }
       }
-      var pictureSnapshot = document.querySelector(
-        "input[name=pictureSnapshot]"
-      );
-      pictureSnapshot.addEventListener("change", function() {
-        snapShotChecked = this.checked;
-        console.log(this.checked);
-      });
+
       if (alert > 20 && snapShotChecked === true) {
         console.log(alert);
         takePhoto();
@@ -147,8 +148,7 @@
         post.onload = function() {
           if (post.readyState === post.DONE) {
             if (post.status === 200) {
-              //console.log(post.response);
-              console.log(JSON.parse(post.responseText));
+            watsonAnalysis = JSON.parse(post.responseText);
             }
           }
         };
@@ -158,7 +158,7 @@
       link.setAttribute("download", "raspiImage");
       link.innerHTML = `<img src="${data}" alt="AI Picture" />`;
       strip.insertBefore(link, strip.firstElementChild);
-
+      return watsonAnalysis
     }
   </script>
 </html>
