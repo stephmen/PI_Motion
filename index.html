@@ -42,6 +42,11 @@
         snapShotChecked = this.checked;
         console.log(this.checked);
       });
+      let watsonOnOff = document.querySelector("input[name=sendWatsonOn-Off]");
+      watsonOnOff.addEventListener("change", function() {
+        watsonChecked = this.checked;
+        console.log("watsonChecked" + this.checked );
+      });
     //Receiving <canvas> from H264(Rasberry PI Format) only loaded in memoy
     const canvas = document.createElement("canvas");
     const video = document.createElement("video");
@@ -136,11 +141,6 @@
     function takePhoto() {
       const strip = document.querySelector(".strip");
       const data = canvas.toDataURL("image/jpeg");
-      var watsonOnOff = document.querySelector("input[name=sendWatsonOn-Off]");
-      watsonOnOff.addEventListener("change", function() {
-        watsonChecked = this.checked;
-        console.log("watsonChecked");
-      });
       if (watsonChecked === true) {
         const post = new XMLHttpRequest();
         post.open("POST", "/receive");
