@@ -149,6 +149,7 @@
           if (post.readyState === post.DONE) {
             if (post.status === 200) {
             watsonAnalysis = JSON.parse(post.responseText);
+            console.log(watsonAnalysis)
             }
           }
         };
@@ -160,5 +161,6 @@
       strip.insertBefore(link, strip.firstElementChild);
       return watsonAnalysis
     }
+
   </script>
 </html>
