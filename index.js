@@ -75,7 +75,7 @@ app.post('/receive', function (req, res) {
         } else {
           //console.log(JSON.stringify(response, null, 2))
         }
-        res.send(response);
+        res.send(JSON.stringify(response, null, 2));
       });
     });
   });
