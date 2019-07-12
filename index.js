@@ -73,7 +73,7 @@ app.post('/receive', function (req, res) {
         if (err) {
           console.log(err);
         } else {
-          //console.log(JSON.stringify(response, null, 2))
+          console.log(JSON.stringify(response, null, 2))
         }
         res.send(JSON.stringify(response, null, 2));
       });
