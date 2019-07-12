@@ -150,6 +150,8 @@
             if (post.status === 200) {
             watsonAnalysis = JSON.parse(post.responseText);
             console.log(watsonAnalysis)
+            watsonAnalysis.images[0].classifiers[0].classes.map( object => console.log(object.class + " score: " + object.score))
+
             }
           }
         };
@@ -159,7 +161,7 @@
       link.setAttribute("download", "raspiImage");
       link.innerHTML = `<img src="${data}" alt="AI Picture" />`;
       strip.insertBefore(link, strip.firstElementChild);
-       
+      //watsonAnalysis.images[0].classifiers[0].classes.map( object => console.log(object.class + " score: " + object.score))
     }
 
   </script>
