@@ -157,11 +157,14 @@
         };
       }
       const link = document.createElement("a");
+      const info = document.createElement("p");
       link.href = data;
       link.setAttribute("download", "raspiImage");
       link.innerHTML = `<img src="${data}" alt="AI Picture" />`;
+      info.innerHTML =  watsonAnalysis.images[0].classifiers[0].classes.map( object => object.class + " score: " + object.score)
+
       strip.insertBefore(link, strip.firstElementChild);
-      //watsonAnalysis.images[0].classifiers[0].classes.map( object => console.log(object.class + " score: " + object.score))
+      strip.insertBefore(info, strip.firstElementChild);
     }
 
   </script>
