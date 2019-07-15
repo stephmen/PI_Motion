@@ -161,7 +161,7 @@
       link.href = data;
       link.setAttribute("download", "raspiImage");
       link.innerHTML = `<img src="${data}" alt="AI Picture" />`;
-      if (watsonAnalysis ==! "") {
+      //if (watsonAnalysis ==! "") {
         info.innerHTML = watsonAnalysis.images[0].classifiers[0].classes.map(
           object => object.class + " score: " + object.score
         );
@@ -169,6 +169,6 @@
 
       strip.insertBefore(link, strip.firstElementChild);
       strip.insertBefore(info, strip.firstElementChild);
-    }
+    //}
   </script>
 </html>
