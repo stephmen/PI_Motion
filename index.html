@@ -28,25 +28,23 @@
   <script>
     let snapShotChecked = "";
     let watsonChecked = "";
-    let watsonAnalysis
+    let watsonAnalysis = {};
 
     const button = document.querySelector("button");
     button.addEventListener("click", function() {
       console.log("button worked");
       video.play();
     });
-    let pictureSnapshot = document.querySelector(
-        "input[name=pictureSnapshot]"
-      );
-      pictureSnapshot.addEventListener("change", function() {
-        snapShotChecked = this.checked;
-        console.log(this.checked);
-      });
-      let watsonOnOff = document.querySelector("input[name=sendWatsonOn-Off]");
-      watsonOnOff.addEventListener("change", function() {
-        watsonChecked = this.checked;
-        console.log("watsonChecked" + this.checked );
-      });
+    let pictureSnapshot = document.querySelector("input[name=pictureSnapshot]");
+    pictureSnapshot.addEventListener("change", function() {
+      snapShotChecked = this.checked;
+      console.log(this.checked);
+    });
+    let watsonOnOff = document.querySelector("input[name=sendWatsonOn-Off]");
+    watsonOnOff.addEventListener("change", function() {
+      watsonChecked = this.checked;
+      console.log("watsonChecked" + this.checked);
+    });
     //Receiving <canvas> from H264(Rasberry PI Format) only loaded in memoy
     const canvas = document.createElement("canvas");
     const video = document.createElement("video");
@@ -148,10 +146,11 @@
         post.onload = function() {
           if (post.readyState === post.DONE) {
             if (post.status === 200) {
-            watsonAnalysis = JSON.parse(post.responseText);
-            console.log(watsonAnalysis)
-            watsonAnalysis.images[0].classifiers[0].classes.map( object => console.log(object.class + " score: " + object.score))
-
+              watsonAnalysis = JSON.parse(post.responseText);
+              console.log(watsonAnalysis);
+              watsonAnalysis.images[0].classifiers[0].classes.map(object =>
+                console.log(object.class + " score: " + object.score)
+              );
             }
           }
         };
@@ -161,12 +160,14 @@
       link.href = data;
       link.setAttribute("download", "raspiImage");
       link.innerHTML = `<img src="${data}" alt="AI Picture" />`;
-      if (watsonAnalysis ==! null)
-      {info.innerHTML =  watsonAnalysis.images[0].classifiers[0].classes.map( object => object.class + " score: " + object.score)}
+      if (watsonAnalysis == !null) {
+        info.innerHTML = watsonAnalysis.images[0].classifiers[0].classes.map(
+          object => object.class + " score: " + object.score
+        );
+      }
 
       strip.insertBefore(link, strip.firstElementChild);
       strip.insertBefore(info, strip.firstElementChild);
     }
-
   </script>
 </html>
