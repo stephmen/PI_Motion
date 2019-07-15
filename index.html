@@ -28,7 +28,7 @@
   <script>
     let snapShotChecked = "";
     let watsonChecked = "";
-    let watsonAnalysis = {};
+    // let watsonAnalysis = {};
 
     const button = document.querySelector("button");
     button.addEventListener("click", function() {
@@ -150,7 +150,8 @@
               console.log(watsonAnalysis);
               watsonAnalysis.images[0].classifiers[0].classes.map(object =>
                 console.log(object.class + " score: " + object.score)
-              );
+                );
+                return watsonAnalysis
             }
           }
         };
