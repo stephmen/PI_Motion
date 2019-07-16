@@ -159,6 +159,7 @@
           }
         };
       }
+
       const link = document.createElement("a");
       const info = document.createElement("p");
       link.href = data;
@@ -171,10 +172,11 @@
       );
       strip.insertBefore(info, strip.firstElementChild);
       }
-      if (watsonAnalysis) { WatsonStrip() } else {
+
+
+      if (watsonAnalysis.images[0].classifiers[0].classes) { WatsonStrip() } else {
         info.innerHTML = "Watson Analysis is deactivated"
       }
-      strip.insertBefore(info, strip.firstElementChild);
       strip.insertBefore(link, strip.firstElementChild);
     }
 
