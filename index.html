@@ -171,8 +171,8 @@
       );
       strip.insertBefore(info, strip.firstElementChild);
       }
-      if (watsonAnalysis == {}) { WatsonStrip() } else {
-        info.innerHTML = "Watson Analysis is deacticated"
+      if (watsonAnalysis) { WatsonStrip() } else {
+        info.innerHTML = "Watson Analysis is deactivated"
       }
       strip.insertBefore(info, strip.firstElementChild);
       strip.insertBefore(link, strip.firstElementChild);
