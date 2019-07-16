@@ -174,7 +174,7 @@ debugger
         strip.insertBefore(info, strip.firstElementChild);
       }
 
-      if (watsonAnalysis.images[0].classifiers[0].classes) {
+      if (watsonAnalysis.images[0].classifiers[0].classes ==! undefined) {
         WatsonStrip();
       } else {
         info.innerHTML = "Watson Analysis is deactivated";
