@@ -140,7 +140,7 @@
       const strip = document.querySelector(".strip");
       const data = canvas.toDataURL("image/jpeg");
       const link = document.createElement("a");
-      const info = document.createElement("p");
+
       link.href = data;
       link.setAttribute("download", "raspiImage");
       link.innerHTML = `<img src="${data}" alt="AI Picture" />`;
@@ -148,7 +148,7 @@
       if (watsonChecked === true) {
         WatsonXML(data);
       }
-      return info
+
     }
     console.log(info)
       function WatsonXML(data) {
@@ -182,6 +182,7 @@
 
 
     function WatsonStrip() {
+      const info = document.createElement("p");
       info.innerHTML = watsonAnalysis.images[0].classifiers[0].classes.map(
         object => object.class + " score: " + object.score
       );
