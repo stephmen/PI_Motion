@@ -148,7 +148,9 @@
           body: data
         })
         .then(response => response.json())
-        .then(response => response.images[0].classifiers[0].classes.map(object => console.log(object.class + " score: " + object.score))
+        .then(response => response.images[0])
+        .classifiers[0].classes.map(object =>
+        console.log(object.class + " score: " + object.score))
 
         //post.open("POST", "/receive");
         //post.send(data);
@@ -162,7 +164,7 @@
           //       );
           //       return watsonAnalysis
           //   }
-          }
+
         };
       //}
       const link = document.createElement("a");
@@ -175,6 +177,6 @@
         strip.insertBefore(link, strip.firstElementChild);
         strip.insertBefore(info, strip.firstElementChild);
 
-    //}
+    }
   </script>
 </html>
