@@ -152,11 +152,19 @@
         post.onload = function() {
           if (post.readyState === post.DONE) {
             if (post.status === 200) {
-              watsonAnalysis = JSON.parse(post.responseText);
-              console.log(watsonAnalysis);
-              watsonAnalysis.images[0].classifiers[0].classes.map(object =>
-                console.log(object.class + " score: " + object.score)
+              JSON.parse(post.responseText, watsonAnalysis =>
+                watsonAnalysis.images[0].classifiers[0].classes.map(object =>
+                  console.log(object.class + " score: " + object.score)
+                )
               );
+              console.log(watsonAnalysis);
+              // watsonAnalysis.images[0].classifiers[0].classes.map(object =>
+              // console.log(object.class + " score: " + object.score));
+              // watsonAnalysis = JSON.parse(post.responseText);
+              // console.log(watsonAnalysis);
+              // watsonAnalysis.images[0].classifiers[0].classes.map(object =>
+              //   console.log(object.class + " score: " + object.score)
+
               return watsonAnalysis;
             }
           }
@@ -173,7 +181,7 @@
         );
         strip.insertBefore(info, strip.firstElementChild);
       }
-      if (watsonAnalysis ==! undefined) {
+      if (watsonAnalysis == !undefined) {
         WatsonStrip();
       } else {
         info.innerHTML = "Watson Analysis is deactivated";
