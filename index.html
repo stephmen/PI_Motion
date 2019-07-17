@@ -181,7 +181,7 @@
 
 
 
-    function WatsonStrip() {
+    function WatsonStrip(watsonAnalysis) {
       const strip = document.querySelector(".strip");
       info.innerHTML = watsonAnalysis.images[0].classifiers[0].classes.map(
         object => object.class + " score: " + object.score
@@ -190,7 +190,7 @@
     }
 
     if (watsonAnalysis ==! undefined) {
-      WatsonStrip();
+      WatsonStrip(watsonAnalysis);
     } else {
       const strip = document.querySelector(".strip");
       const info = document.createElement("p");
