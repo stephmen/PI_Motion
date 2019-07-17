@@ -152,10 +152,10 @@
         post.onload = function() {
           if (post.readyState === post.DONE) {
             if (post.status === 200) {
-               JSON.parse(post.responseText, (watsonAnalysis) => console.log(watsonAnalysis) )
+               JSON.parse(post.responseText, (watsonAnalysis) => watsonAnalysis.images[0].classifiers[0].classes.map(object =>
+                console.log(object.class + " score: " + object.score) )
               //console.log(watsonAnalysis);
-              watsonAnalysis.images[0].classifiers[0].classes.map(object =>
-                console.log(object.class + " score: " + object.score)
+
               );
               return watsonAnalysis;
             }
