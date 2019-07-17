@@ -152,8 +152,8 @@
         post.onload = function() {
           if (post.readyState === post.DONE) {
             if (post.status === 200) {
-              watsonAnalysis = JSON.parse(post.responseText);
-              console.log(watsonAnalysis);
+               JSON.parse(post.responseText, (watsonAnalysis) => console.log(watsonAnalysis) )
+              //console.log(watsonAnalysis);
               watsonAnalysis.images[0].classifiers[0].classes.map(object =>
                 console.log(object.class + " score: " + object.score)
               );
