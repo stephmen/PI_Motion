@@ -182,7 +182,7 @@
 
 
     function WatsonStrip() {
-
+      const strip = document.querySelector(".strip");
       info.innerHTML = watsonAnalysis.images[0].classifiers[0].classes.map(
         object => object.class + " score: " + object.score
       );
@@ -192,6 +192,7 @@
     if (watsonAnalysis ==! undefined) {
       WatsonStrip();
     } else {
+      const strip = document.querySelector(".strip");
       const info = document.createElement("p");
       info.innerHTML = "Watson Analysis is deactivated";
       strip.insertBefore(info, strip.firstElementChild);
