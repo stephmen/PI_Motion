@@ -135,7 +135,7 @@
       }
       alert = 0;
     }
-debugger
+
     function takePhoto() {
       const strip = document.querySelector(".strip");
       const data = canvas.toDataURL("image/jpeg");
@@ -173,8 +173,8 @@ debugger
         );
         strip.insertBefore(info, strip.firstElementChild);
       }
-
-      if (watsonAnalysis.images[0].classifiers[0].classes ==! undefined) {
+debugger
+      if (watsonAnalysis ==! undefined) {
         WatsonStrip();
       } else {
         info.innerHTML = "Watson Analysis is deactivated";
