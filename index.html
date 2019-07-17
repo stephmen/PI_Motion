@@ -150,8 +150,8 @@
         .then(response => response.images[0].classifiers[0].classes.map(object => object.class + " score: " + object.score))
         .then(response => {
           info.innerHTML = response
-          console.log(reponse)
-        })
+          return response
+        }).then(response => console.log(response))
       }
 
 
