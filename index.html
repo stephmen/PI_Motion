@@ -150,7 +150,7 @@
       }
 
     }
-    
+
       function WatsonXML(data) {
         const post = new XMLHttpRequest();
         post.open("POST", "/receive");
@@ -182,17 +182,19 @@
 
 
     function WatsonStrip() {
-      const info = document.createElement("p");
+
       info.innerHTML = watsonAnalysis.images[0].classifiers[0].classes.map(
         object => object.class + " score: " + object.score
       );
       strip.insertBefore(info, strip.firstElementChild);
     }
 
-    if (watsonAnalysis == !undefined) {
+    if (watsonAnalysis ==! undefined) {
       WatsonStrip();
     } else {
+      const info = document.createElement("p");
       info.innerHTML = "Watson Analysis is deactivated";
+      strip.insertBefore(info, strip.firstElementChild);
     }
     strip.insertBefore(link, strip.firstElementChild);
   </script>
