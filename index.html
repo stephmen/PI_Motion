@@ -148,7 +148,8 @@
           body: data
         })
         .then(response => response.json())
-        .then(response => console.log(response))
+        .then(response => response.images[0].classifiers[0].classes.map(object => console.log(object.class + " score: " + object.score))
+
         //post.open("POST", "/receive");
         //post.send(data);
         //post.onload = function() {
