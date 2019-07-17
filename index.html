@@ -146,7 +146,9 @@
         fetch("/receive", {
           method: "POST",
           body: data
-        }).then(response => console.log(response))
+        })
+        .then(response => response.json())
+        .then(console.log(response))
         //post.open("POST", "/receive");
         //post.send(data);
         //post.onload = function() {
@@ -171,7 +173,7 @@
         );
         strip.insertBefore(link, strip.firstElementChild);
         strip.insertBefore(info, strip.firstElementChild);
-      
+
     //}
   </script>
 </html>
