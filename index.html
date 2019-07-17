@@ -147,17 +147,18 @@
           body: data
         })
         .then(response => response.json())
-        //.then(response => response.images[0].classifiers[0].classes.map(object => console.log(object.class + " score: " + object.score)))
         .then(response => response.images[0].classifiers[0].classes.map(object => object.class + " score: " + object.score))
-        .then(response => {info.innerHTML = response})
+        .then(response => {
+          info.innerHTML = response
+          console.log(reponse)
+        })
       }
 
 
       link.href = data;
       link.setAttribute("download", "raspiImage");
       link.innerHTML = `<img src="${data}" alt="AI Picture" />`;
-      // info.innerHTML = watsonAnalysis.images[0].classifiers[0].classes.map(object => object.class + " score: " + object.score
-      //   );
+
         strip.insertBefore(link, strip.firstElementChild);
         strip.insertBefore(info, strip.firstElementChild);
 
