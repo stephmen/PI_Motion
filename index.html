@@ -159,7 +159,7 @@
           if (post.readyState === post.DONE) {
             if (post.status === 200) {
               watsonAnalysis = JSON.parse(post.responseText);
-              if (watsonAnalysis.images[0]) {
+              if (watsonAnalysis.images[0] ==! null) {
                 watsonAnalysis.images[0].classifiers[0].classes.map(object =>
                   console.log(object.class + " score: " + object.score)
                 );
