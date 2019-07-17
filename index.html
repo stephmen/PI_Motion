@@ -137,6 +137,8 @@
     }
 
     function takePhoto() {
+      const link = document.createElement("a");
+      const info = document.createElement("p");
       const strip = document.querySelector(".strip");
       const data = canvas.toDataURL("image/jpeg");
       if (watsonChecked === true) {
@@ -146,23 +148,16 @@
         })
         .then(response => response.json())
         .then(response => response.images[0].classifiers[0].classes.map(object => console.log(object.class + " score: " + object.score)))
+        .then(response => info.innerHTML = response.images[0].classifiers[0].classes.map(object => object.class + " score: " + object.score
+        ))
       }
-          // if (post.readyState === post.DONE) {
-          //   if (post.status === 200) {
-          //     watsonAnalysis = JSON.parse(post.responseText);
-          //     console.log(watsonAnalysis);
-          //     watsonAnalysis.images[0].classifiers[0].classes.map(object =>
-          //       console.log(object.class + " score: " + object.score)
-          //       );
-          //       return watsonAnalysis
 
-      const link = document.createElement("a");
-      const info = document.createElement("p");
+
       link.href = data;
       link.setAttribute("download", "raspiImage");
       link.innerHTML = `<img src="${data}" alt="AI Picture" />`;
-      info.innerHTML = watsonAnalysis.images[0].classifiers[0].classes.map(object => object.class + " score: " + object.score
-        );
+      // info.innerHTML = watsonAnalysis.images[0].classifiers[0].classes.map(object => object.class + " score: " + object.score
+      //   );
         strip.insertBefore(link, strip.firstElementChild);
         strip.insertBefore(info, strip.firstElementChild);
 
