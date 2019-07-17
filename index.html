@@ -144,7 +144,7 @@
       link.href = data;
       link.setAttribute("download", "raspiImage");
       link.innerHTML = `<img src="${data}" alt="AI Picture" />`;
-
+      strip.insertBefore(link, strip.firstElementChild);
       if (watsonChecked === true) {
         WatsonXML(data);
       }
@@ -197,6 +197,6 @@
       info.innerHTML = "Watson Analysis is deactivated";
       strip.insertBefore(info, strip.firstElementChild);
     }
-    strip.insertBefore(link, strip.firstElementChild);
+
   </script>
 </html>
