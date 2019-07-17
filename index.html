@@ -148,7 +148,9 @@
       if (watsonChecked === true) {
         WatsonXML(data);
       }
+      return info
     }
+    console.log(info)
       function WatsonXML(data) {
         const post = new XMLHttpRequest();
         post.open("POST", "/receive");
