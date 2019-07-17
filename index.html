@@ -27,6 +27,7 @@
     IBM Watson ON/OFF
     <br />
     <button aria-setsize="40">START</button>
+    <canvas id="destination" width="640" height="480"></canvas>
   </body>
   <script>
     let snapShotChecked = "";
@@ -51,10 +52,11 @@
     //Receiving <canvas> from H264(Rasberry PI Format) only loaded in memoy
     const canvas = document.createElement("canvas");
     const video = document.createElement("video");
-    let canvasD = document.createElement("canvas");
+    //let canvasD = document.createElement("canvas");
+    let canvasD = document.querySelector(id="destination");
     let ctxD = canvasD.getContext("2d");
     const pellicule = document.createElement("div");
-    document.body.appendChild(canvasD).setAttribute("id", "destination");
+    //document.body.appendChild(canvasD).setAttribute("id", "destination");
     document.body.appendChild(pellicule).setAttribute("class", "strip");
 
     // Streaming to Canvas from Raspberry PI with Express Socket
