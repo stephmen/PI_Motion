@@ -130,7 +130,7 @@
 
       if (alert > 20 && snapShotChecked === true) {
         time = new Date();
-        if (previousTime.getTime() == !undefined) {
+        if (previousTime == !undefined) {
           diff = time.getTime() - previousTime.getTime();
         }
         let previousTime = time;
