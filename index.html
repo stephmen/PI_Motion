@@ -33,7 +33,6 @@
     let snapShotChecked = "";
     let watsonChecked = "";
     let watsonAnalysis = {};
-    let previousTime = 0
 
     const button = document.querySelector("button");
     button.addEventListener("click", function() {
@@ -123,6 +122,7 @@
       }
       alert = 0;
     }
+    let previousTime = 0
 
     function takePhoto(time) {
       if (time - previousTime < 5000) { return } else {
