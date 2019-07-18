@@ -126,7 +126,8 @@
 
     function takePhoto(time) {
       if (time - previousTime < 5000) { return } else {
-      console.log(time - previousTime)
+      let testValue = time - previousTime;
+      console.log(testValue)
       let previousTime = time
       const link = document.createElement("a");
       const info = document.createElement("p");
