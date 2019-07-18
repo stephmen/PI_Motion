@@ -114,7 +114,7 @@
             previous_frame[pos] &&
             Math.abs(previous_frame[pos] - r) > threshold
           ) {
-            ctxD.fillStyle = "rgb(" + 0 + "," +  + "," + 200 + ")";
+            ctxD.fillStyle = "rgb(" + 0 + "," + 0 + "," + 150 + ")";
             ctxD.fillRect(x, y, sample_size, sample_size);
             alert = alert + 1;
             // a significant colour difference
@@ -127,7 +127,7 @@
 
       if (alert > 20 && snapShotChecked === true) {
         console.log(alert);
-        setTimeout(takePhoto(), 5000);
+        takePhoto();
       }
       alert = 0;
     }
