@@ -11,14 +11,16 @@
   ></script>
 
   <body>
-    <h1>IBM Watson <br>
-      Motion Detector Anylyser</h1>
+    <h1>
+      IBM Watson <br />
+      Motion Detector Anylyser
+    </h1>
     <label id="takepicture" class="switch">
       <input type="checkbox" name="pictureSnapshot" />
       <span class="slider round"></span>
     </label>
     <span>Picture SnapShot</span>
-    <br>
+    <br />
     <label class="switch">
       <input type="checkbox" name="sendWatsonOn-Off" />
       <span class="slider round"></span>
@@ -70,8 +72,7 @@
       var playPromise = video.play();
       if (playPromise !== undefined) {
         playPromise
-          .then(_ => {
-          })
+          .then(_ => {})
           .catch(error => {
             console.log(error);
           });
@@ -128,11 +129,17 @@
       }
 
       if (alert > 20 && snapShotChecked === true) {
-        time = new Date
-        diff = time.getTime() - previousTime.getTime()
-        previousTime = time
-        console.log(diff)
-        console.log(time.getTime())
+        time = new Date();
+        if (previousTime.getTime() == !undefined) {
+          diff = time.getTime() - previousTime.getTime();
+        }
+        let previousTime = time;
+        if (diff) {
+          console.log(diff);
+        } else {
+          console.log(time.getTime());
+        }
+        console.log(time.getTime());
         console.log(alert);
         takePhoto();
       }
