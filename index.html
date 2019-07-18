@@ -16,20 +16,17 @@
     <label id="takepicture" class="switch">
       <input type="checkbox" name="pictureSnapshot" />
       <span class="slider round"></span>
+      Picture SnapShot
     </label>
-    Picture SnapShot
     <br />
     <label class="switch">
       <br>
       <input type="checkbox" name="sendWatsonOn-Off" />
       <span class="slider round"></span>
     </label>
-    <textarea name="" id="" cols="30" rows="10">IBM Watson ON/OFF</textarea>
     IBM Watson ON/OFF
     <br />
-    <button>START</button>
-    <br>
-    <canvas id="destination" width="640" height="480"></canvas>
+    <button aria-setsize="40">START</button>
   </body>
   <script>
     let snapShotChecked = "";
@@ -54,11 +51,10 @@
     //Receiving <canvas> from H264(Rasberry PI Format) only loaded in memoy
     const canvas = document.createElement("canvas");
     const video = document.createElement("video");
-    //let canvasD = document.createElement("canvas");
-    let canvasD = document.querySelector(id="destination");
+    let canvasD = document.createElement("canvas");
     let ctxD = canvasD.getContext("2d");
     const pellicule = document.createElement("div");
-    //document.body.appendChild(canvasD).setAttribute("id", "destination");
+    document.body.appendChild(canvasD).setAttribute("id", "destination");
     document.body.appendChild(pellicule).setAttribute("class", "strip");
 
     // Streaming to Canvas from Raspberry PI with Express Socket
