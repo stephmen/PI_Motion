@@ -27,7 +27,7 @@
     </label>
     <span>IBM Watson ON/OFF</span>
     <br />
-    <button aria-setsize="40">START</button>
+    <button id="start" aria-setsize="40">START</button>
   </body>
   <script>
     let snapShotChecked = "";
@@ -96,9 +96,7 @@
       canvasD.height = h;
       ctxD.drawImage(video, 0, 0, w, h);
       // get the screen's pixels data
-
       let data = ctxD.getImageData(0, 0, w, h).data;
-
       // loop through rows and columns
       for (var y = 0; y < h; y += sample_size) {
         for (var x = 0; x < w; x += sample_size) {
@@ -112,12 +110,11 @@
           // first check if it's not the first frame, but
           // seeing of when the previous_frame array
           // is not we empty, and then only draw something if there's
-
           if (
             previous_frame[pos] &&
             Math.abs(previous_frame[pos] - r) > threshold
           ) {
-            ctxD.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
+            ctxD.fillStyle = "rgb(" + 0 + "," +  + "," + 200 + ")";
             ctxD.fillRect(x, y, sample_size, sample_size);
             alert = alert + 1;
             // a significant colour difference
