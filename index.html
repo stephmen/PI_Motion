@@ -17,13 +17,13 @@
       <input type="checkbox" name="pictureSnapshot" />
       <span class="slider round"></span>
     </label>
-    Picture SnapShot
+    <span>Picture SnapShot</span>
     <br>
     <label class="switch">
       <input type="checkbox" name="sendWatsonOn-Off" />
       <span class="slider round"></span>
     </label>
-    IBM Watson ON/OFF
+    <span>IBM Watson ON/OFF</span>
     <br />
     <button aria-setsize="40">START</button>
   </body>
@@ -71,12 +71,8 @@
       if (playPromise !== undefined) {
         playPromise
           .then(_ => {
-            // Automatic playback started!
-            // Show playing UI.
           })
           .catch(error => {
-            // Auto-play was prevented
-            // Show paused UI.
             console.log(error);
           });
       }
