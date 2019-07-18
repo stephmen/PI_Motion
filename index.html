@@ -118,7 +118,7 @@
       if (alert > 20 && snapShotChecked === true) {
         console.log(alert);
         let time = new Date()
-        time = time.setTime()
+        time = time.getTime()
         takePhoto(time);
       }
       alert = 0;
