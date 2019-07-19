@@ -117,7 +117,7 @@
       }
       if (alert > 20 && snapShotChecked === true) {
         console.log(alert);
-        _.lodash.throtle(takePhoto,10000);
+        _.throtle(takePhoto,10000);
       }
       alert = 0;
     }
