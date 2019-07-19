@@ -33,7 +33,7 @@
   <script>
     let snapShotChecked = "";
     let watsonChecked = "";
-    let watsonAnalysis = {};
+
 
     const button = document.querySelector("button");
     button.addEventListener("click", function() {
@@ -43,12 +43,12 @@
     let pictureSnapshot = document.querySelector("input[name=pictureSnapshot]");
     pictureSnapshot.addEventListener("change", function() {
       snapShotChecked = this.checked;
-      console.log(this.checked);
+      console.log("Take Pictures " + this.checked);
     });
     let watsonOnOff = document.querySelector("input[name=sendWatsonOn-Off]");
     watsonOnOff.addEventListener("change", function() {
       watsonChecked = this.checked;
-      console.log("watsonChecked" + this.checked);
+      console.log("WatsonChecked " + this.checked);
     });
     //Receiving <canvas> from H264(Rasberry PI Format) only loaded in memoy
     const canvas = document.createElement("canvas");
@@ -73,13 +73,13 @@
       var playPromise = video.play();
       if (playPromise !== undefined) {
         playPromise
-          .then(_ => {})
+          .then(_ => {video.addEventListener("progress", StreamToCanvas2D);})
           .catch(error => {
             console.log(error);
           });
       }
     }
-    video.addEventListener("progress", StreamToCanvas2D);
+    //video.addEventListener("progress", StreamToCanvas2D);
     //Streaming to <canvasD> ctx 2D
     //Pixelisation Size
     var sample_size = 10;
