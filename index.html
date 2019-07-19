@@ -9,6 +9,7 @@
     type="text/javascript"
     src="https://rawgit.com/131/h264-live-player/master/vendor/dist/http-live-player.js"
   ></script>
+  <script src="lodash.js"></script>
 
   <body>
     <h1>
@@ -116,13 +117,10 @@
       }
       if (alert > 20 && snapShotChecked === true) {
         console.log(alert);
-        let time = new Date()
-        time = time.getTime()
-        takePhoto(time);
+        _.lodash.throtle(takePhoto,10000);
       }
       alert = 0;
     }
-    let previousTime = time;
 
     function takePhoto(time) {
       if (time - previousTime < 5000) { return } else {
