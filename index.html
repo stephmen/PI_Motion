@@ -117,16 +117,14 @@
       }
       if (alert > 20 && snapShotChecked === true) {
         console.log(alert);
-        _.throtle(takePhoto,10000);
+        var startPhoto = _.throtle(takePhoto(),10000);
+        startPhoto()
       }
+
       alert = 0;
     }
 
-    function takePhoto(time) {
-      if (time - previousTime < 5000) { return } else {
-      let testValue = time - previousTime;
-      console.log(testValue)
-      let previousTime = time
+    function takePhoto() {
       const link = document.createElement("a");
       const info = document.createElement("p");
       const strip = document.querySelector(".strip");
@@ -154,6 +152,6 @@
       strip.insertBefore(link, strip.firstElementChild);
       strip.insertBefore(info, strip.firstElementChild);
     }
-    }
+
   </script>
 </html>
