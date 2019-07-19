@@ -117,14 +117,13 @@
       }
       if (alert > 20 && snapShotChecked === true) {
         console.log(alert);
-        var startPhoto = _.throttle(takePhoto(),10000);
         startPhoto()
       }
 
       alert = 0;
     }
 
-    function takePhoto() {
+    var startPhoto = _.throttle(function takePhoto() {
       const link = document.createElement("a");
       const info = document.createElement("p");
       const strip = document.querySelector(".strip");
@@ -151,7 +150,7 @@
       link.innerHTML = `<img src="${data}" alt="AI Picture" />`;
       strip.insertBefore(link, strip.firstElementChild);
       strip.insertBefore(info, strip.firstElementChild);
-    }
+    }, 5000)
 
   </script>
 </html>
