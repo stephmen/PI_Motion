@@ -5,6 +5,7 @@ const ws = require('express-ws')(app);
 const path = require('path');
 const raspividStream = require('raspivid-stream');
 const spawn = require('child_process').spawn;
+const cors = require('cors');
 
 
 
